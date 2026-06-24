@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="480" viewBox="0 0 680 480" fill="none">
+  <rect width="680" height="480" rx="20" fill="#F7FBFB"/>
+  <g transform="translate(40,40)">
+    <rect x="0" y="0" width="260" height="180" rx="12" fill="#0F6B72" opacity="0.95" />
+    <circle cx="360" cy="90" r="56" fill="#F4C400" />
+    <rect x="310" y="200" width="220" height="120" rx="12" fill="#062F36" opacity="0.06" />
+    <rect x="18" y="210" width="320" height="88" rx="10" fill="#ffffff" stroke="#E6F2F2"/>
+  </g>
+  <text x="36" y="452" font-family="Inter, Arial" font-weight="600" font-size="13" fill="#062F36">Illustration: guidance and support</text>
+</svg>
