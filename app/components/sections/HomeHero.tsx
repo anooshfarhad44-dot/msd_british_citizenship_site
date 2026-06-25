@@ -1,8 +1,3 @@
-
-
-
-
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -50,9 +45,8 @@ export default function HomeHero() {
     return () => clearTimeout(timer);
   }, [currentText, isDeleting, currentWordIndex, typingSpeed]);
 
-
   return (
-    <section className="relative overflow-hidden min-h-[680px] lg:min-h-[760px] flex items-center bg-[#4a0025]">
+    <section className="relative overflow-hidden min-h-[600px] lg:min-h-[660px] flex items-center bg-[#4a0025]">
       <style>{`
         @keyframes subtle-pulse {
           0%, 100% { transform: scale(1); box-shadow: 0 14px 30px rgba(244,196,0,0.25); }
@@ -87,7 +81,7 @@ export default function HomeHero() {
                 British Citizenship Solicitors
               </div>
 
-             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.85rem] font-extrabold text-white leading-[1.2] tracking-tight min-h-[110px] sm:min-h-[auto]">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.85rem] font-extrabold text-white leading-[1.2] tracking-tight min-h-[110px] sm:min-h-[auto]">
                 Expert British Citizenship <br />
                 <span className="text-[#f4c400] typewriter-cursor pr-1 inline-block">
                   {currentText}
