@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Reveal from "../ui/Reveal";
+import ButtonLink from "../ui/ButtonLink";
 
 const features = [
   {
@@ -41,42 +42,42 @@ export default function AboutSection() {
           <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-20 items-center">
             {/* Content */}
             <div>
-              <p className="mb-3 text-[#1b6fa8] font-extrabold text-sm tracking-widest uppercase">
+              <p className="mb-3 text-[#7a003c] font-extrabold text-sm tracking-widest uppercase">
                 Professional Expertise
               </p>
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#0c2340] leading-tight m-0 mb-5">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#7a003c] leading-tight m-0 mb-5">
                 About Our Citizenship Services
               </h2>
-              <p className="text-[#1b6fa8] text-xl leading-relaxed mb-10">
+              <p className="text-[#7a003c] text-xl leading-relaxed mb-10">
                 Personal, practical legal support for British Citizenship applications across all routes.
               </p>
               <div className="flex flex-col gap-6">
                 {features.map((f) => (
                   <div
                     key={f.title}
-                    className="flex gap-5 p-6 bg-[#f5f8fd] border border-[#d0dce8]/60 rounded-2xl hover:-translate-y-1 hover:bg-white hover:shadow-[0_15px_40px_rgba(12,35,64,0.08)] hover:border-[#f4c400] transition-all duration-300"
+                    className="flex gap-5 p-6 bg-[#fff5f8] border border-[#d0dce8]/60 rounded-2xl hover:-translate-y-1 hover:bg-white hover:shadow-[0_15px_40px_rgba(122,0,60,0.08)] hover:border-[#f4c400] transition-all duration-300"
                   >
-                    <div className="shrink-0 w-10 h-10 p-2 bg-[#f4c400] rounded-xl text-[#0c2340]">{f.icon}</div>
+                    <div className="shrink-0 w-10 h-10 p-2 bg-[#f4c400] rounded-xl text-[#7a003c]">{f.icon}</div>
                     <div>
-                      <strong className="block text-lg font-extrabold text-[#0c2340] mb-1.5">{f.title}</strong>
+                      <strong className="block text-lg font-extrabold text-[#7a003c] mb-1.5">{f.title}</strong>
                       <span className="text-[#4a6480] text-base leading-relaxed">{f.text}</span>
                     </div>
                   </div>
                 ))}
               </div>
               <div className="mt-10 flex gap-4 flex-wrap">
-                <Link href="/contact" className="inline-flex items-center justify-center min-h-[52px] px-6 py-3 rounded-full font-extrabold bg-[#f4c400] text-[#0c2340] shadow-[0_14px_30px_rgba(244,196,0,0.25)] hover:-translate-y-0.5 transition-all duration-200">
+                <ButtonLink href="/contact">
                   Book a free consultation
-                </Link>
-                <Link href="/routes" className="inline-flex items-center justify-center min-h-[52px] px-6 py-3 rounded-full font-extrabold text-[#0c2340] border border-[#1b6fa8]/30 bg-white/80 hover:-translate-y-0.5 transition-all duration-200">
+                </ButtonLink>
+                <ButtonLink href="/routes" variant="outline-light">
                   View citizenship routes
-                </Link>
+                </ButtonLink>
               </div>
             </div>
 
             {/* Visual */}
             <Reveal delay={120}>
-              <div className="bg-gradient-to-br from-[#0c2340] to-[#1b6fa8] rounded-[30px] p-8 text-white shadow-[0_30px_70px_rgba(12,35,64,0.15)]">
+              <div className="bg-gradient-to-br from-[#7a003c] to-[#5a0028] rounded-[30px] p-8 text-white shadow-[0_30px_70px_rgba(122,0,60,0.15)]">
                 <div className="text-center mb-6">
                   <div className="text-6xl mb-3">🇬🇧</div>
                   <h3 className="text-2xl font-black">Why Choose MSD Solicitors?</h3>

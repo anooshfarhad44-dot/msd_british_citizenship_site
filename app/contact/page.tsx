@@ -26,7 +26,7 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="py-5 bg-gradient-to-br from-[#0c2340] to-[#1b6fa8] text-white">
+      <section className="py-5 bg-gradient-to-br from-[#7a003c] to-[#5a0028] text-white">
         <div className="w-full max-w-[1120px] mx-auto px-4 text-center">
           <div className="inline-flex items-center px-3 py-1.5 border border-[#f4c400]/40 rounded-full bg-white/10 text-[#f4c400] font-extrabold text-xs tracking-widest uppercase backdrop-blur-sm mb-4">
             Free Consultation
@@ -47,30 +47,30 @@ export default function ContactPage() {
 
             {/* Left: Contact Info */}
             <div>
-              <h2 className="text-2xl font-bold text-[#0c2340] mb-6">Get in Touch</h2>
+              <h2 className="text-2xl font-bold text-[#7a003c] mb-6">Get in Touch</h2>
 
               <div className="flex flex-col gap-4 mb-8">
-                <a href={contact.phoneHref} className="flex items-center gap-4 p-5 bg-white rounded-2xl border border-[#d0dce8] hover:border-[#1b6fa8] hover:-translate-y-0.5 transition-all duration-200 group">
+                <a href={contact.phoneHref} className="flex items-center gap-4 p-5 bg-white rounded-2xl border border-[#d0dce8] hover:border-[#7a003c] hover:-translate-y-0.5 transition-all duration-200 group">
                   <div className="w-12 h-12 bg-[#f4c400] rounded-xl flex items-center justify-center shrink-0">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-[#0c2340]">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="text-[#7a003c]">
                       <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1 22 16.92z" />
                     </svg>
                   </div>
                   <div>
-                    <div className="text-xs font-black uppercase tracking-widest text-[#1b6fa8] mb-0.5">Call Us</div>
-                    <div className="font-extrabold text-[#0c2340] group-hover:text-[#1b6fa8] transition-colors">{contact.phone}</div>
+                    <div className="text-xs font-black uppercase tracking-widest text-[#7a003c] mb-0.5">Call Us</div>
+                    <div className="font-extrabold text-[#7a003c] group-hover:text-[#7a003c] transition-colors">{contact.phone}</div>
                   </div>
                 </a>
 
-                <a href={contact.emailHref} className="flex items-center gap-4 p-5 bg-white rounded-2xl border border-[#d0dce8] hover:border-[#1b6fa8] hover:-translate-y-0.5 transition-all duration-200 group">
-                  <div className="w-12 h-12 bg-[#1b6fa8] rounded-xl flex items-center justify-center shrink-0">
+                <a href={contact.emailHref} className="flex items-center gap-4 p-5 bg-white rounded-2xl border border-[#d0dce8] hover:border-[#7a003c] hover:-translate-y-0.5 transition-all duration-200 group">
+                  <div className="w-12 h-12 bg-[#7a003c] rounded-xl flex items-center justify-center shrink-0">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5">
                       <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                   </div>
                   <div>
-                    <div className="text-xs font-black uppercase tracking-widest text-[#1b6fa8] mb-0.5">Email Us</div>
-                    <div className="font-extrabold text-[#0c2340] group-hover:text-[#1b6fa8] transition-colors">{contact.email}</div>
+                    <div className="text-xs font-black uppercase tracking-widest text-[#7a003c] mb-0.5">Email Us</div>
+                    <div className="font-extrabold text-[#7a003c] group-hover:text-[#7a003c] transition-colors">{contact.email}</div>
                   </div>
                 </a>
 
@@ -82,18 +82,18 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <div className="text-xs font-black uppercase tracking-widest text-[#25D366] mb-0.5">WhatsApp</div>
-                    <div className="font-extrabold text-[#0c2340]">Chat with us now</div>
+                    <div className="font-extrabold text-[#7a003c]">Chat with us now</div>
                   </div>
                 </a>
               </div>
 
-              <h3 className="text-lg font-bold text-[#0c2340] mb-4">Our Offices</h3>
+              <h3 className="text-lg font-bold text-[#7a003c] mb-4">Our Offices</h3>
               <div className="flex flex-col gap-3">
                 {officeInfo.map((office) => (
                   <div key={office.city} className="p-4 bg-white rounded-2xl border border-[#d0dce8]">
-                    <div className="font-black text-[#1b6fa8] text-sm mb-1">{office.city}</div>
+                    <div className="font-black text-[#7a003c] text-sm mb-1">{office.city}</div>
                     <div className="text-xs text-[#4a6480] mb-1.5">{office.address}</div>
-                    <a href={office.href} className="text-xs font-bold text-[#f4c400] hover:text-[#0c2340] transition-colors">{office.phone}</a>
+                    <a href={office.href} className="text-xs font-bold text-[#f4c400] hover:text-[#7a003c] transition-colors">{office.phone}</a>
                   </div>
                 ))}
               </div>

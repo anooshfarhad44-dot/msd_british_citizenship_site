@@ -37,19 +37,19 @@ function SearchableDropdown({ options, placeholder, selectedValue, onSelect, has
         onClick={() => { setIsOpen(!isOpen); setSearchTerm(""); }}
         className={`w-full min-h-[52px] px-4 rounded-xl border flex items-center justify-between cursor-pointer bg-slate-50 transition-all text-sm font-medium ${
           isOpen
-            ? "border-[#1b6fa8] ring-4 ring-[#1b6fa8]/5 bg-white shadow-sm"
+            ? "border-[#7a003c] ring-4 ring-[#7a003c]/5 bg-white shadow-sm"
             : hasError
-            ? "border-red-500 ring-4 ring-red-500/5 text-[#0c2340]"
-            : "border-slate-200 text-[#0c2340] hover:bg-white hover:border-slate-300"
+            ? "border-red-500 ring-4 ring-red-500/5 text-[#7a003c]"
+            : "border-slate-200 text-[#7a003c] hover:bg-white hover:border-slate-300"
         }`}
       >
-        <span className={selectedValue ? "text-[#0c2340] font-semibold" : "text-gray-400 text-xs"}>
+        <span className={selectedValue ? "text-[#7a003c] font-semibold" : "text-gray-400 text-xs"}>
           {selectedValue || placeholder}
         </span>
         <svg
           width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
           strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
-          className={`text-[#1b6fa8] transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+          className={`text-[#7a003c] transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
         >
           <polyline points="6 9 12 15 18 9" />
         </svg>
@@ -64,7 +64,7 @@ function SearchableDropdown({ options, placeholder, selectedValue, onSelect, has
               autoFocus
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full h-9 px-3 text-xs font-medium rounded-lg border border-slate-200 bg-white text-[#0c2340] placeholder-gray-400 focus:outline-none focus:border-[#1b6fa8] focus:ring-2 focus:ring-[#1b6fa8]/10"
+              className="w-full h-9 px-3 text-xs font-medium rounded-lg border border-slate-200 bg-white text-[#7a003c] placeholder-gray-400 focus:outline-none focus:border-[#7a003c] focus:ring-2 focus:ring-[#7a003c]/10"
             />
           </div>
           <ul className="max-h-[220px] overflow-y-auto p-1 list-none m-0">
@@ -75,8 +75,8 @@ function SearchableDropdown({ options, placeholder, selectedValue, onSelect, has
                   onClick={() => { onSelect(option); setIsOpen(false); }}
                   className={`px-3 py-2.5 text-xs font-semibold rounded-lg cursor-pointer transition-colors ${
                     selectedValue === option
-                      ? "bg-[#1b6fa8] text-white"
-                      : "text-[#192c42] hover:bg-blue-50 hover:text-[#1b6fa8]"
+                      ? "bg-[#7a003c] text-white"
+                      : "text-[#192c42] hover:bg-blue-50 hover:text-[#7a003c]"
                   }`}
                 >
                   {option}
@@ -215,8 +215,8 @@ export default function CaseReviewForm() {
   };
 
   return (
-    <div className="bg-white p-6 md:p-10 rounded-2xl border border-slate-100 shadow-[0_22px_60px_rgba(12,35,64,0.06)] relative before:absolute before:top-0 before:left-0 before:w-full before:h-2 before:bg-gradient-to-r before:from-[#1b6fa8] before:to-[#f4c400] before:rounded-t-2xl">
-      <h2 className="text-2xl font-black text-[#0c2340] mb-2 tracking-tight">
+    <div className="bg-white p-6 md:p-10 rounded-2xl border border-slate-100 shadow-[0_22px_60px_rgba(12,35,64,0.06)] relative before:absolute before:top-0 before:left-0 before:w-full before:h-2 before:bg-gradient-to-r before:from-[#7a003c] before:to-[#f4c400] before:rounded-t-2xl">
+      <h2 className="text-2xl font-black text-[#7a003c] mb-2 tracking-tight">
         Request a Free Case Review
       </h2>
       <p className="text-xs font-semibold text-gray-400 mb-6">
@@ -227,22 +227,22 @@ export default function CaseReviewForm() {
         {/* Name Row */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-1.5">
-            <label className="block text-xs font-bold text-[#0c2340]">First Name <span className="text-red-500">*</span></label>
+            <label className="block text-xs font-bold text-[#7a003c]">First Name <span className="text-red-500">*</span></label>
             <input
               type="text" placeholder="First Name" required disabled={isSubmitting}
               value={formData.firstName} onKeyDown={handleNameKeyDown} onBlur={() => handleBlur("firstName")}
               onChange={(e) => handleNameChange("firstName", e.target.value)}
-              className={`w-full h-[52px] px-4 rounded-xl border bg-slate-50 text-[#0c2340] placeholder-gray-400 placeholder:text-xs font-medium focus:outline-none focus:bg-white focus:ring-4 transition-all text-sm ${touched.firstName && errors.firstName ? "border-red-500 focus:border-red-500 focus:ring-red-500/5" : "border-slate-200 focus:border-[#1b6fa8] focus:ring-[#1b6fa8]/5"}`}
+              className={`w-full h-[52px] px-4 rounded-xl border bg-slate-50 text-[#7a003c] placeholder-gray-400 placeholder:text-xs font-medium focus:outline-none focus:bg-white focus:ring-4 transition-all text-sm ${touched.firstName && errors.firstName ? "border-red-500 focus:border-red-500 focus:ring-red-500/5" : "border-slate-200 focus:border-[#7a003c] focus:ring-[#7a003c]/5"}`}
             />
             {touched.firstName && errors.firstName && <p className="text-[10px] font-semibold text-red-500 m-0">{errors.firstName}</p>}
           </div>
           <div className="space-y-1.5">
-            <label className="block text-xs font-bold text-[#0c2340]">Last Name <span className="text-red-500">*</span></label>
+            <label className="block text-xs font-bold text-[#7a003c]">Last Name <span className="text-red-500">*</span></label>
             <input
               type="text" placeholder="Last Name" required disabled={isSubmitting}
               value={formData.lastName} onKeyDown={handleNameKeyDown} onBlur={() => handleBlur("lastName")}
               onChange={(e) => handleNameChange("lastName", e.target.value)}
-              className={`w-full h-[52px] px-4 rounded-xl border bg-slate-50 text-[#0c2340] placeholder-gray-400 placeholder:text-xs font-medium focus:outline-none focus:bg-white focus:ring-4 transition-all text-sm ${touched.lastName && errors.lastName ? "border-red-500 focus:border-red-500 focus:ring-red-500/5" : "border-slate-200 focus:border-[#1b6fa8] focus:ring-[#1b6fa8]/5"}`}
+              className={`w-full h-[52px] px-4 rounded-xl border bg-slate-50 text-[#7a003c] placeholder-gray-400 placeholder:text-xs font-medium focus:outline-none focus:bg-white focus:ring-4 transition-all text-sm ${touched.lastName && errors.lastName ? "border-red-500 focus:border-red-500 focus:ring-red-500/5" : "border-slate-200 focus:border-[#7a003c] focus:ring-[#7a003c]/5"}`}
             />
             {touched.lastName && errors.lastName && <p className="text-[10px] font-semibold text-red-500 m-0">{errors.lastName}</p>}
           </div>
@@ -251,22 +251,22 @@ export default function CaseReviewForm() {
         {/* Contact Row */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-1.5">
-            <label className="block text-xs font-bold text-[#0c2340]">Email Address <span className="text-red-500">*</span></label>
+            <label className="block text-xs font-bold text-[#7a003c]">Email Address <span className="text-red-500">*</span></label>
             <input
               type="email" placeholder="Email Address" required disabled={isSubmitting}
               value={formData.email} onBlur={() => handleBlur("email")}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className={`w-full h-[52px] px-4 rounded-xl border bg-slate-50 text-[#0c2340] placeholder-gray-400 placeholder:text-xs font-medium focus:outline-none focus:bg-white focus:ring-4 transition-all text-sm ${touched.email && errors.email ? "border-red-500 focus:border-red-500 focus:ring-red-500/5" : "border-slate-200 focus:border-[#1b6fa8] focus:ring-[#1b6fa8]/5"}`}
+              className={`w-full h-[52px] px-4 rounded-xl border bg-slate-50 text-[#7a003c] placeholder-gray-400 placeholder:text-xs font-medium focus:outline-none focus:bg-white focus:ring-4 transition-all text-sm ${touched.email && errors.email ? "border-red-500 focus:border-red-500 focus:ring-red-500/5" : "border-slate-200 focus:border-[#7a003c] focus:ring-[#7a003c]/5"}`}
             />
             {touched.email && errors.email && <p className="text-[10px] font-semibold text-red-500 m-0">{errors.email}</p>}
           </div>
           <div className="space-y-1.5">
-            <label className="block text-xs font-bold text-[#0c2340]">Phone Number <span className="text-red-500">*</span></label>
+            <label className="block text-xs font-bold text-[#7a003c]">Phone Number <span className="text-red-500">*</span></label>
             <input
               type="tel" placeholder="Phone Number" required disabled={isSubmitting}
               value={formData.phone} onBlur={() => handleBlur("phone")}
               onChange={(e) => handlePhoneChange(e.target.value)}
-              className={`w-full h-[52px] px-4 rounded-xl border bg-slate-50 text-[#0c2340] placeholder-gray-400 placeholder:text-xs font-medium focus:outline-none focus:bg-white focus:ring-4 transition-all text-sm ${touched.phone && errors.phone ? "border-red-500 focus:border-red-500 focus:ring-red-500/5" : "border-slate-200 focus:border-[#1b6fa8] focus:ring-[#1b6fa8]/5"}`}
+              className={`w-full h-[52px] px-4 rounded-xl border bg-slate-50 text-[#7a003c] placeholder-gray-400 placeholder:text-xs font-medium focus:outline-none focus:bg-white focus:ring-4 transition-all text-sm ${touched.phone && errors.phone ? "border-red-500 focus:border-red-500 focus:ring-red-500/5" : "border-slate-200 focus:border-[#7a003c] focus:ring-[#7a003c]/5"}`}
             />
             {touched.phone && errors.phone && <p className="text-[10px] font-semibold text-red-500 m-0">{errors.phone}</p>}
           </div>
@@ -275,7 +275,7 @@ export default function CaseReviewForm() {
         {/* Dropdowns Row */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-1.5">
-            <label className="block text-xs font-bold text-[#0c2340]">Country of Residence <span className="text-red-500">*</span></label>
+            <label className="block text-xs font-bold text-[#7a003c]">Country of Residence <span className="text-red-500">*</span></label>
             <SearchableDropdown options={countries} placeholder="Country of Residence" selectedValue={formData.countryResidence}
               hasError={!!(touched.countryResidence && errors.countryResidence)}
               onSelect={(val) => { setFormData({ ...formData, countryResidence: val }); handleBlur("countryResidence"); }}
@@ -283,7 +283,7 @@ export default function CaseReviewForm() {
             {touched.countryResidence && errors.countryResidence && <p className="text-[10px] font-semibold text-red-500 m-0">{errors.countryResidence}</p>}
           </div>
           <div className="space-y-1.5">
-            <label className="block text-xs font-bold text-[#0c2340]">Nationality <span className="text-red-500">*</span></label>
+            <label className="block text-xs font-bold text-[#7a003c]">Nationality <span className="text-red-500">*</span></label>
             <SearchableDropdown options={countries} placeholder="Your Nationality" selectedValue={formData.nationality}
               hasError={!!(touched.nationality && errors.nationality)}
               onSelect={(val) => { setFormData({ ...formData, nationality: val }); handleBlur("nationality"); }}
@@ -294,7 +294,7 @@ export default function CaseReviewForm() {
 
         {/* Service Dropdown */}
         <div className="space-y-1.5">
-          <label className="block text-xs font-bold text-[#0c2340]">Citizenship Service You Need <span className="text-red-500">*</span></label>
+          <label className="block text-xs font-bold text-[#7a003c]">Citizenship Service You Need <span className="text-red-500">*</span></label>
           <SearchableDropdown options={citizenshipServices} placeholder="Select Citizenship Service" selectedValue={formData.citizenshipService}
             hasError={!!(touched.citizenshipService && errors.citizenshipService)}
             onSelect={(val) => { setFormData({ ...formData, citizenshipService: val }); handleBlur("citizenshipService"); }}
@@ -304,7 +304,7 @@ export default function CaseReviewForm() {
 
         {/* Concerns */}
         <div className={`bg-slate-50 p-4 rounded-xl border transition-all ${touched.concerns && errors.concerns ? "border-red-500" : "border-slate-200"}`}>
-          <label className="block text-xs font-bold text-[#0c2340] mb-3 uppercase tracking-wide">
+          <label className="block text-xs font-bold text-[#7a003c] mb-3 uppercase tracking-wide">
             Main Concerns – select all that apply <span className="text-red-500">*</span>
           </label>
           <div className="space-y-2.5 max-h-[160px] overflow-y-auto pr-1">
@@ -312,9 +312,9 @@ export default function CaseReviewForm() {
               <label key={concern} className="flex items-start gap-3 text-xs font-bold text-[#192c42] cursor-pointer select-none group">
                 <input type="checkbox" disabled={isSubmitting} checked={formData.concerns.includes(concern)}
                   onChange={() => handleCheckboxChange(concern)}
-                  className="mt-0.5 w-4 h-4 rounded border-gray-300 text-[#1b6fa8] focus:ring-[#1b6fa8] accent-[#1b6fa8] cursor-pointer"
+                  className="mt-0.5 w-4 h-4 rounded border-gray-300 text-[#7a003c] focus:ring-[#7a003c] accent-[#7a003c] cursor-pointer"
                 />
-                <span className="group-hover:text-[#1b6fa8] transition-colors">{concern}</span>
+                <span className="group-hover:text-[#7a003c] transition-colors">{concern}</span>
               </label>
             ))}
           </div>
@@ -323,7 +323,7 @@ export default function CaseReviewForm() {
 
         {/* Tailored Advice Radio */}
         <div className={`bg-slate-50 p-4 rounded-xl border flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition-all ${touched.tailoredAdvice && errors.tailoredAdvice ? "border-red-500" : "border-slate-200"}`}>
-          <label className="text-xs font-bold text-[#0c2340] uppercase tracking-wide">
+          <label className="text-xs font-bold text-[#7a003c] uppercase tracking-wide">
             Want tailored advice? <span className="text-red-500">*</span>
           </label>
           <div className="flex gap-6">
@@ -332,9 +332,9 @@ export default function CaseReviewForm() {
                 <input type="radio" name="tailoredAdvice" required disabled={isSubmitting} value={option}
                   checked={formData.tailoredAdvice === option}
                   onChange={(e) => { setFormData({ ...formData, tailoredAdvice: e.target.value }); handleBlur("tailoredAdvice"); }}
-                  className="w-4 h-4 text-[#1b6fa8] focus:ring-[#1b6fa8] accent-[#1b6fa8] cursor-pointer"
+                  className="w-4 h-4 text-[#7a003c] focus:ring-[#7a003c] accent-[#7a003c] cursor-pointer"
                 />
-                <span className="group-hover:text-[#1b6fa8] transition-colors">{option}</span>
+                <span className="group-hover:text-[#7a003c] transition-colors">{option}</span>
               </label>
             ))}
           </div>
@@ -346,7 +346,7 @@ export default function CaseReviewForm() {
           <label className="flex items-start gap-3 text-[11px] font-semibold text-gray-400 cursor-pointer select-none">
             <input type="checkbox" required disabled={isSubmitting} checked={formData.consent}
               onChange={(e) => { setFormData({ ...formData, consent: e.target.checked }); handleBlur("consent"); }}
-              className={`mt-0.5 w-4 h-4 shrink-0 rounded border-gray-300 text-[#1b6fa8] focus:ring-[#1b6fa8] accent-[#1b6fa8] cursor-pointer ${touched.consent && errors.consent ? "outline outline-2 outline-red-500/50 rounded-sm" : ""}`}
+              className={`mt-0.5 w-4 h-4 shrink-0 rounded border-gray-300 text-[#7a003c] focus:ring-[#7a003c] accent-[#7a003c] cursor-pointer ${touched.consent && errors.consent ? "outline outline-2 outline-red-500/50 rounded-sm" : ""}`}
             />
             <span className="leading-tight">
               I consent to my data being used by MSD Solicitors to process my enquiry and keep me informed. <span className="text-red-500">*</span>
@@ -359,7 +359,7 @@ export default function CaseReviewForm() {
         <div className="pt-2">
           <button
             type="submit" disabled={isSubmitting}
-            className="w-full h-[54px] flex items-center justify-center bg-[#1b6fa8] text-white font-black text-sm rounded-xl shadow-[0_10px_25px_-5px_rgba(27,111,168,0.3)] hover:bg-[#0b5156] hover:shadow-[0_12px_30px_-5px_rgba(27,111,168,0.4)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 disabled:opacity-50 disabled:pointer-events-none"
+            className="w-full h-[54px] flex items-center justify-center bg-[#7a003c] text-white font-black text-sm rounded-xl shadow-[0_10px_25px_-5px_rgba(122,0,60,0.3)] hover:bg-[#5a0028] hover:shadow-[0_12px_30px_-5px_rgba(122,0,60,0.4)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 disabled:opacity-50 disabled:pointer-events-none"
           >
             {isSubmitting ? "Submitting..." : "Submit Case Review Request"}
           </button>

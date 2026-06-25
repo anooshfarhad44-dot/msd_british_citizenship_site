@@ -13,13 +13,13 @@ export default function FaqSection() {
 
         {/* Header */}
         <div className="text-center mb-14">
-          <p className="text-[#1b6fa8] font-extrabold text-sm tracking-widest uppercase mb-3">
+          <p className="text-[#7a003c] font-extrabold text-sm tracking-widest uppercase mb-3">
             Got Questions?
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#0c2340] m-0">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#7a003c] m-0">
             Frequently Asked <span className="text-[#f4c400]">Questions</span>
           </h2>
-          <div className="w-14 h-0.5 bg-gradient-to-r from-[#1b6fa8] to-[#f4c400] rounded-full mx-auto mt-4" />
+          <div className="w-14 h-0.5 bg-gradient-to-r from-[#7a003c] to-[#f4c400] rounded-full mx-auto mt-4" />
           <p className="mt-5 text-lg text-[#4a6480] max-w-2xl mx-auto leading-relaxed">
             Answers to the most common questions about British Citizenship applications. If your question isn&apos;t here, our solicitors are happy to help.
           </p>
@@ -32,33 +32,33 @@ export default function FaqSection() {
               key={index}
               className={`bg-white rounded-2xl border overflow-hidden transition-all duration-300 ${
                 openIndex === index
-                  ? "border-[#1b6fa8] shadow-[0_10px_30px_rgba(12,35,64,0.08)]"
-                  : "border-[#d0dce8] hover:border-[#1b6fa8]/40 hover:shadow-[0_6px_20px_rgba(12,35,64,0.05)]"
+                  ? "border-[#7a003c] shadow-[0_10px_30px_rgba(12,35,64,0.08)]"
+                  : "border-[#d0dce8] hover:border-[#7a003c]/40 hover:shadow-[0_6px_20px_rgba(12,35,64,0.05)]"
               }`}
             >
               <button
                 type="button"
                 aria-expanded={openIndex === index}
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full flex items-center gap-4 px-6 py-5 bg-transparent border-0 cursor-pointer text-left hover:bg-[#0c2340]/[0.015] transition-colors"
+                className="w-full flex items-center gap-4 px-6 py-5 bg-transparent border-0 cursor-pointer text-left hover:bg-[#7a003c]/[0.015] transition-colors"
               >
                 {/* Number badge */}
                 <span className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center font-black text-xs transition-all duration-300 ${
                   openIndex === index
-                    ? "bg-[#1b6fa8] text-white"
-                    : "bg-[#f4c400] text-[#0c2340]"
+                    ? "bg-[#7a003c] text-white"
+                    : "bg-[#f4c400] text-[#7a003c]"
                 }`}>
                   {index + 1}
                 </span>
 
-                <span className="flex-1 text-base font-bold text-[#0c2340] text-left leading-snug">
+                <span className="flex-1 text-base font-bold text-[#7a003c] text-left leading-snug">
                   {faq.q}
                 </span>
 
                 {/* Chevron */}
                 <span className={`shrink-0 w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-300 ${
                   openIndex === index
-                    ? "border-[#1b6fa8] bg-[#1b6fa8]/5 text-[#1b6fa8] rotate-180"
+                    ? "border-[#7a003c] bg-[#7a003c]/5 text-[#7a003c] rotate-180"
                     : "border-[#d0dce8] text-[#4a6480]"
                 }`}>
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -84,14 +84,14 @@ export default function FaqSection() {
         </div>
 
         {/* Bottom CTA */}
-        <div className="max-w-[860px] mx-auto bg-gradient-to-r from-[#0c2340] to-[#1b6fa8] rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-white">
+        <div className="max-w-[860px] mx-auto bg-gradient-to-r from-[#7a003c] to-[#7a003c] rounded-2xl p-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-white">
           <div>
             <strong className="block text-lg font-black mb-1">Still have questions?</strong>
             <p className="text-white/80 text-sm m-0">Our citizenship solicitors are available to answer any queries and provide expert legal advice tailored to your situation.</p>
           </div>
           <Link
             href="/contact"
-            className="shrink-0 inline-flex items-center justify-center min-h-[48px] px-7 py-3 rounded-full font-extrabold bg-[#f4c400] text-[#0c2340] shadow-[0_10px_25px_rgba(244,196,0,0.25)] hover:-translate-y-0.5 hover:shadow-[0_14px_30px_rgba(244,196,0,0.35)] transition-all duration-200 whitespace-nowrap"
+            className="shrink-0 inline-flex items-center justify-center min-h-[48px] px-7 py-3 rounded-full font-extrabold bg-[#f4c400] text-[#7a003c] shadow-[0_10px_25px_rgba(244,196,0,0.25)] hover:-translate-y-0.5 hover:shadow-[0_14px_30px_rgba(244,196,0,0.35)] transition-all duration-200 whitespace-nowrap"
           >
             Speak to a solicitor
           </Link>

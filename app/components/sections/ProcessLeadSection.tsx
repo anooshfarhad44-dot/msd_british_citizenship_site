@@ -20,10 +20,10 @@ export default function ProcessLeadSection({
 
           {/* Left — copy */}
           <div>
-            <p className="text-[#1b6fa8] font-extrabold text-sm tracking-widest uppercase mb-3">
+            <p className="text-[#7a003c] font-extrabold text-sm tracking-widest uppercase mb-3">
               Free Consultation
             </p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0c2340] leading-tight mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#7a003c] leading-tight mb-4">
               Get Expert Legal Advice on British Citizenship
             </h2>
             <p className="text-[#4a6480] text-lg leading-relaxed mb-8">
@@ -40,7 +40,7 @@ export default function ProcessLeadSection({
                 <div key={f.title} className="flex items-start gap-4">
                   <div className="w-10 h-10 bg-[#f4c400] rounded-xl flex items-center justify-center text-xl shrink-0">{f.icon}</div>
                   <div>
-                    <div className="font-extrabold text-[#0c2340] text-sm">{f.title}</div>
+                    <div className="font-extrabold text-[#7a003c] text-sm">{f.title}</div>
                     <div className="text-[#4a6480] text-sm leading-relaxed">{f.desc}</div>
                   </div>
                 </div>

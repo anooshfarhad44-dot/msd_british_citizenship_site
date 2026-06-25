@@ -7,7 +7,7 @@ export default function RoutesPage() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="py-5 bg-gradient-to-br from-[#0c2340] to-[#1b6fa8] text-white">
+      <section className="py-5 bg-gradient-to-br from-[#7a003c] to-[#7a003c] text-white">
         <div className="w-full max-w-[1120px] mx-auto px-4 text-center">
           <div className="inline-flex items-center px-3 py-1.5 border border-[#f4c400]/40 rounded-full bg-white/10 text-[#f4c400] font-extrabold text-xs tracking-widest uppercase backdrop-blur-sm mb-4">
             Citizenship Routes
@@ -30,7 +30,7 @@ export default function RoutesPage() {
 
           {/* Route 1: Spouse */}
           <div className="mb-16 bg-white rounded-3xl border border-[#d0dce8] shadow-[0_8px_30px_rgba(12,35,64,0.06)] overflow-hidden">
-            <div className="bg-gradient-to-r from-[#0c2340] to-[#1b6fa8] p-8 text-white">
+            <div className="bg-gradient-to-r from-[#7a003c] to-[#5a0028] p-8 text-white">
               <div className="text-xs font-black uppercase tracking-widest text-[#f4c400] mb-2">Route 1</div>
               <h2 className="text-2xl md:text-3xl font-bold m-0">Applying for British Citizenship as a Spouse</h2>
               <p className="text-white/80 mt-2">If you are married to or in a civil partnership with a British Citizen</p>
@@ -68,7 +68,7 @@ export default function RoutesPage() {
 
           {/* Route 2: ILR/Settled Status */}
           <div className="mb-16 bg-white rounded-3xl border border-[#d0dce8] shadow-[0_8px_30px_rgba(12,35,64,0.06)] overflow-hidden">
-            <div className="bg-gradient-to-r from-[#1b6fa8] to-[#0d3557] p-8 text-white">
+            <div className="bg-gradient-to-r from-[#7a003c] to-[#5a0028] p-8 text-white">
               <div className="text-xs font-black uppercase tracking-widest text-[#f4c400] mb-2">Route 2</div>
               <h2 className="text-2xl md:text-3xl font-bold m-0">Applying with ILR or Settled Status</h2>
               <p className="text-white/80 mt-2">Once you have held ILR or settled status for at least 12 months</p>
@@ -86,7 +86,7 @@ export default function RoutesPage() {
                   "Indefinite leave to enter the UK",
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-3 p-4 bg-[#f5f8fd] rounded-xl border border-[#d0dce8]">
-                    <span className="w-5 h-5 bg-[#1b6fa8] rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                    <span className="w-5 h-5 bg-[#7a003c] rounded-full flex items-center justify-center shrink-0 mt-0.5">
                       <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>
                     </span>
                     <span className="text-sm text-[#4a6480]">{item}</span>
@@ -94,7 +94,7 @@ export default function RoutesPage() {
                 ))}
               </div>
               <div className="p-5 bg-[#f4c400]/10 border-l-4 border-[#f4c400] rounded-xl mb-4">
-                <strong className="block text-[#0c2340] font-extrabold mb-1">Post-Brexit Change (from 1st January 2021)</strong>
+                <strong className="block text-[#7a003c] font-extrabold mb-1">Post-Brexit Change (from 1st January 2021)</strong>
                 <p className="text-[#556b6e] text-sm m-0">If you had permanent residence status before you obtained settled status, you can count that time towards the required 12 months.</p>
               </div>
             </div>
@@ -102,7 +102,7 @@ export default function RoutesPage() {
 
           {/* Route 3: Permanent Residence */}
           <div className="mb-16 bg-white rounded-3xl border border-[#d0dce8] shadow-[0_8px_30px_rgba(12,35,64,0.06)] overflow-hidden">
-            <div className="bg-gradient-to-r from-[#0d3557] to-[#0c2340] p-8 text-white">
+            <div className="bg-gradient-to-r from-[#5a0028] to-[#7a003c] p-8 text-white">
               <div className="text-xs font-black uppercase tracking-widest text-[#f4c400] mb-2">Route 3</div>
               <h2 className="text-2xl md:text-3xl font-bold m-0">Applying with Permanent Residence Status</h2>
               <p className="text-white/80 mt-2">For EU, EEA, and Swiss nationals</p>
@@ -131,20 +131,20 @@ export default function RoutesPage() {
                 ))}
               </div>
               <div className="p-5 bg-[#f4c400]/10 border-l-4 border-[#f4c400] rounded-xl">
-                <strong className="block text-[#0c2340] font-extrabold mb-1">Important Note (from 1st January 2021)</strong>
+                <strong className="block text-[#7a003c] font-extrabold mb-1">Important Note (from 1st January 2021)</strong>
                 <p className="text-[#556b6e] text-sm m-0">You can no longer apply for a permanent residence document. If you have received settled status, you must apply for citizenship using that status instead of permanent residence status.</p>
               </div>
             </div>
           </div>
 
           {/* CTA strip */}
-          <div className="bg-gradient-to-br from-[#0c2340] to-[#1b6fa8] rounded-3xl p-10 text-white text-center">
+          <div className="bg-gradient-to-br from-[#7a003c] to-[#7a003c] rounded-3xl p-10 text-white text-center">
             <h2 className="text-3xl font-bold mb-4">Speak to a Legal Expert About British Citizenship</h2>
             <p className="text-white/85 text-lg max-w-2xl mx-auto mb-7 leading-relaxed">
               At MSD Solicitors, we are experts in immigration matters and have supported thousands of satisfied clients.
               Our dedicated team is fully up to date with recent changes to immigration laws.
             </p>
-            <Link href="/contact" className="inline-flex items-center justify-center min-h-[52px] px-10 py-3 rounded-full font-extrabold bg-[#f4c400] text-[#0c2340] shadow-[0_14px_30px_rgba(244,196,0,0.25)] hover:-translate-y-0.5 transition-all duration-200">
+            <Link href="/contact" className="inline-flex items-center justify-center min-h-[52px] px-10 py-3 rounded-full font-extrabold bg-[#f4c400] text-[#7a003c] shadow-[0_14px_30px_rgba(244,196,0,0.25)] hover:-translate-y-0.5 transition-all duration-200">
               Book a free consultation
             </Link>
           </div>

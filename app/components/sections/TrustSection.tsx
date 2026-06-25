@@ -18,8 +18,8 @@ export default function TrustSection() {
           100% { transform: translateX(calc(-33.333% - 13.33px)); }
         }
         @keyframes subtle-pulse {
-          0%, 100% { transform: scale(1); box-shadow: 0 10px 30px -10px rgba(27,111,168,0.15); }
-          50% { transform: scale(1.02); box-shadow: 0 20px 35px -8px rgba(27,111,168,0.25), 0 0 15px 2px rgba(244,196,0,0.2); }
+          0%, 100% { transform: scale(1); box-shadow: 0 10px 30px -10px rgba(122,0,60,0.15); }
+          50% { transform: scale(1.02); box-shadow: 0 20px 35px -8px rgba(122,0,60,0.25), 0 0 15px 2px rgba(244,196,0,0.2); }
         }
       `}} />
 
@@ -28,13 +28,13 @@ export default function TrustSection() {
         {/* Left panel */}
         <div className="flex-1 max-w-[620px]">
           <Reveal>
-            <h2 className="text-3xl md:text-4xl font-black text-[#0c2340] m-0 mb-3 leading-[1.15] tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-black text-[#7a003c] m-0 mb-3 leading-[1.15] tracking-tight">
               Apply For British Citizenship with{" "}
               <Link href="https://www.msdsolicitors.co.uk/" target="_blank" className="text-[#f4c400] underline underline-offset-4 decoration-2 font-black hover:opacity-90 transition-opacity">
                 MSD Solicitors
               </Link>
             </h2>
-            <h3 className="text-xl md:text-2xl font-bold text-[#1b6fa8] mb-10 mt-0 tracking-wide">
+            <h3 className="text-xl md:text-2xl font-bold text-[#7a003c] mb-10 mt-0 tracking-wide">
               We Specialise in British Citizenship Applications
             </h3>
 
@@ -43,18 +43,18 @@ export default function TrustSection() {
               className="flex items-center gap-6 mb-10 bg-white p-6 rounded-2xl border border-slate-100 max-w-sm relative overflow-hidden group select-none"
               style={{ animation: "subtle-pulse 4s ease-in-out infinite" }}
             >
-              <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-[#f4c400] to-[#1b6fa8]" />
-              <div className="absolute -right-12 -bottom-12 w-28 h-28 bg-[#1b6fa8]/5 rounded-full blur-xl" />
+              <div className="absolute top-0 left-0 w-2 h-full bg-gradient-to-b from-[#f4c400] to-[#7a003c]" />
+              <div className="absolute -right-12 -bottom-12 w-28 h-28 bg-[#7a003c]/5 rounded-full blur-xl" />
               <div className="relative flex items-baseline">
-                <span className="text-6xl font-black text-[#0c2340] leading-none tracking-tighter bg-gradient-to-br from-[#0c2340] to-[#1b6fa8] bg-clip-text text-transparent">99</span>
-                <span className="text-3xl font-extrabold text-[#1b6fa8] ml-0.5">%</span>
+                <span className="text-6xl font-black text-[#7a003c] leading-none tracking-tighter bg-gradient-to-br from-[#7a003c] to-[#7a003c] bg-clip-text text-transparent">99</span>
+                <span className="text-3xl font-extrabold text-[#7a003c] ml-0.5">%</span>
               </div>
               <div className="flex flex-col leading-tight relative z-10">
-                <strong className="text-lg font-black text-[#0c2340] flex items-center gap-1.5">
+                <strong className="text-lg font-black text-[#7a003c] flex items-center gap-1.5">
                   Success Rate For
-                  <span className="inline-block w-2 h-2 rounded-full bg-[#1b6fa8] animate-ping" />
+                  <span className="inline-block w-2 h-2 rounded-full bg-[#7a003c] animate-ping" />
                 </strong>
-                <span className="text-sm font-semibold text-[#1b6fa8] mt-0.5 tracking-wide uppercase text-[11px]">
+                <span className="text-sm font-semibold text-[#7a003c] mt-0.5 tracking-wide uppercase text-[11px]">
                   Citizenship Applications
                 </span>
               </div>
@@ -67,22 +67,22 @@ export default function TrustSection() {
                   key={index}
                   className={`flex items-start gap-4 p-4 rounded-xl border cursor-pointer transition-all duration-300 ${
                     openIndex === index
-                      ? "border-[#1b6fa8] bg-white shadow-[0_10px_25px_-5px_rgba(27,111,168,0.1)]"
-                      : "border-slate-200 bg-white hover:border-[#1b6fa8]/60 hover:shadow-[0_8px_20px_rgba(12,35,64,0.05)] hover:-translate-y-0.5"
+                      ? "border-[#7a003c] bg-white shadow-[0_10px_25px_-5px_rgba(27,111,168,0.1)]"
+                      : "border-slate-200 bg-white hover:border-[#7a003c]/60 hover:shadow-[0_8px_20px_rgba(12,35,64,0.05)] hover:-translate-y-0.5"
                   }`}
                   onClick={() => setOpenIndex(openIndex === index ? null : index)}
                 >
-                  <div className="shrink-0 w-10 h-10 flex items-center justify-center bg-gradient-to-br from-[#1b6fa8] to-[#0b5156] rounded-xl text-white shadow-sm">
+                  <div className="shrink-0 w-10 h-10 flex items-center justify-center bg-gradient-to-br from-[#7a003c] to-[#5a0028] rounded-xl text-white shadow-sm">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
                   </div>
                   <div className="flex-1">
                     <div className="flex justify-between items-center gap-3">
-                      <strong className="text-base font-bold text-[#0c2340]">{feature.title}</strong>
+                      <strong className="text-base font-bold text-[#7a003c]">{feature.title}</strong>
                       <svg
                         width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
-                        className={`shrink-0 text-slate-400 transition-transform duration-300 ${openIndex === index ? "rotate-180 text-[#1b6fa8]" : ""}`}
+                        className={`shrink-0 text-slate-400 transition-transform duration-300 ${openIndex === index ? "rotate-180 text-[#7a003c]" : ""}`}
                       >
                         <polyline points="6 9 12 15 18 9" />
                       </svg>

@@ -299,17 +299,17 @@ export const blogPosts: BlogPost[] = [
     image: "/images/heroImg.png",
     content: `
       <div class="space-y-8">
-        <div class="border-l-4 border-[#1b6fa8] pl-6 py-2 bg-gradient-to-r from-[#e6f0f8] to-transparent rounded-r-lg">
+        <div class="border-l-4 border-[#7a003c] pl-6 py-2 bg-gradient-to-r from-[#e6f0f8] to-transparent rounded-r-lg">
           <h2 class="text-2xl font-extrabold text-[#192c42] mb-3">Introduction</h2>
           <p class="text-[#4a6480] text-lg leading-relaxed">Applying for British Citizenship is a significant milestone. With the right preparation and legal support, you can navigate the process with confidence. This guide covers all routes and requirements for 2026 applications.</p>
         </div>
         <div>
           <h2 class="text-2xl font-extrabold text-[#192c42] mb-4">Who Can Apply?</h2>
           <ul class="grid gap-3">
-            <li class="flex items-start gap-3 p-4 bg-white rounded-xl border border-[#d0dce8] shadow-sm"><span class="flex-shrink-0 w-8 h-8 bg-[#1b6fa8] text-white rounded-full flex items-center justify-center font-bold text-sm mt-0.5">✓</span><span class="text-[#4a6480]">Married to or in a civil partnership with a British citizen</span></li>
-            <li class="flex items-start gap-3 p-4 bg-white rounded-xl border border-[#d0dce8] shadow-sm"><span class="flex-shrink-0 w-8 h-8 bg-[#1b6fa8] text-white rounded-full flex items-center justify-center font-bold text-sm mt-0.5">✓</span><span class="text-[#4a6480]">Holds Indefinite Leave to Remain (ILR)</span></li>
-            <li class="flex items-start gap-3 p-4 bg-white rounded-xl border border-[#d0dce8] shadow-sm"><span class="flex-shrink-0 w-8 h-8 bg-[#1b6fa8] text-white rounded-full flex items-center justify-center font-bold text-sm mt-0.5">✓</span><span class="text-[#4a6480]">Has settled status under the EU Settlement Scheme</span></li>
-            <li class="flex items-start gap-3 p-4 bg-white rounded-xl border border-[#d0dce8] shadow-sm"><span class="flex-shrink-0 w-8 h-8 bg-[#1b6fa8] text-white rounded-full flex items-center justify-center font-bold text-sm mt-0.5">✓</span><span class="text-[#4a6480]">Holds permanent residence status</span></li>
+            <li class="flex items-start gap-3 p-4 bg-white rounded-xl border border-[#d0dce8] shadow-sm"><span class="flex-shrink-0 w-8 h-8 bg-[#7a003c] text-white rounded-full flex items-center justify-center font-bold text-sm mt-0.5">✓</span><span class="text-[#4a6480]">Married to or in a civil partnership with a British citizen</span></li>
+            <li class="flex items-start gap-3 p-4 bg-white rounded-xl border border-[#d0dce8] shadow-sm"><span class="flex-shrink-0 w-8 h-8 bg-[#7a003c] text-white rounded-full flex items-center justify-center font-bold text-sm mt-0.5">✓</span><span class="text-[#4a6480]">Holds Indefinite Leave to Remain (ILR)</span></li>
+            <li class="flex items-start gap-3 p-4 bg-white rounded-xl border border-[#d0dce8] shadow-sm"><span class="flex-shrink-0 w-8 h-8 bg-[#7a003c] text-white rounded-full flex items-center justify-center font-bold text-sm mt-0.5">✓</span><span class="text-[#4a6480]">Has settled status under the EU Settlement Scheme</span></li>
+            <li class="flex items-start gap-3 p-4 bg-white rounded-xl border border-[#d0dce8] shadow-sm"><span class="flex-shrink-0 w-8 h-8 bg-[#7a003c] text-white rounded-full flex items-center justify-center font-bold text-sm mt-0.5">✓</span><span class="text-[#4a6480]">Holds permanent residence status</span></li>
           </ul>
         </div>
       </div>
@@ -340,7 +340,7 @@ export const blogPosts: BlogPost[] = [
     image: "/images/heroImg.png",
     content: `
       <div class="space-y-8">
-        <div class="border-l-4 border-[#1b6fa8] pl-6 py-2 bg-gradient-to-r from-[#e6f0f8] to-transparent rounded-r-lg">
+        <div class="border-l-4 border-[#7a003c] pl-6 py-2 bg-gradient-to-r from-[#e6f0f8] to-transparent rounded-r-lg">
           <h2 class="text-2xl font-extrabold text-[#192c42] mb-3">About the Life in the UK Test</h2>
           <p class="text-[#4a6480] text-lg leading-relaxed">The Life in the UK Test is a requirement for most British citizenship applicants. It consists of 24 questions and you must score at least 75% to pass.</p>
         </div>

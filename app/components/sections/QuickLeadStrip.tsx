@@ -94,7 +94,7 @@ export default function QuickLeadStrip({ context = "" }: QuickLeadStripProps) {
     `w-full h-11 px-4 rounded-xl border text-sm font-medium focus:outline-none transition-all duration-200 bg-white ${
       touched[f] && errors[f]
         ? "border-rose-400 focus:border-rose-500 focus:ring-2 focus:ring-rose-500/10"
-        : "border-[#d0dce8] text-[#0c2340] placeholder-[#9aafbf] focus:border-[#1b6fa8] focus:ring-2 focus:ring-[#1b6fa8]/10"
+        : "border-[#d0dce8] text-[#7a003c] placeholder-[#9aafbf] focus:border-[#7a003c] focus:ring-2 focus:ring-[#7a003c]/10"
     }`;
 
   // ── Success ────────────────────────────────────────────────
@@ -116,7 +116,7 @@ export default function QuickLeadStrip({ context = "" }: QuickLeadStripProps) {
 
   // ── Main section ───────────────────────────────────────────
   return (
-    <section className="bg-gradient-to-br from-[#0c2340] via-[#0d3557] to-[#1b4a7a] py-12 md:py-14">
+    <section className="bg-gradient-to-br from-[#7a003c] via-[#5a0028] to-[#3a001a] py-12 md:py-14">
       <div className="w-full max-w-[1120px] mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.15fr] gap-10 lg:gap-16 items-center">
 
@@ -174,12 +174,12 @@ export default function QuickLeadStrip({ context = "" }: QuickLeadStripProps) {
           {/* ── RIGHT: Form card ────────────────────────────── */}
           <div className="bg-white rounded-3xl shadow-[0_24px_60px_rgba(0,0,0,0.25)] overflow-hidden">
             {/* Top bar */}
-            <div className="bg-gradient-to-r from-[#0c2340] via-[#1b6fa8] to-[#f4c400] h-1.5" />
+            <div className="bg-gradient-to-r from-[#7a003c] via-[#f4c400] to-[#f4c400] h-1.5" />
 
             <div className="p-7">
               {/* Form header */}
               <div className="mb-5">
-                <h3 className="text-lg font-black text-[#0c2340]">Request a Free Callback</h3>
+                <h3 className="text-lg font-black text-[#7a003c]">Request a Free Callback</h3>
                 <p className="text-[#4a6480] text-xs mt-1 leading-relaxed">
                   Complete the form below and a solicitor will call you back — usually within 1 business hour.
                 </p>
@@ -190,7 +190,7 @@ export default function QuickLeadStrip({ context = "" }: QuickLeadStripProps) {
                 {/* Name & Phone */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-[10px] font-black uppercase tracking-wider text-[#0c2340] mb-1">
+                    <label className="block text-[10px] font-black uppercase tracking-wider text-[#7a003c] mb-1">
                       Full Name <span className="text-rose-500">*</span>
                     </label>
                     <input type="text" placeholder="e.g. John Smith" value={fields.name}
@@ -199,7 +199,7 @@ export default function QuickLeadStrip({ context = "" }: QuickLeadStripProps) {
                     {touched.name && errors.name && <p className="text-rose-500 text-[10px] font-semibold mt-0.5">⚠ {errors.name}</p>}
                   </div>
                   <div>
-                    <label className="block text-[10px] font-black uppercase tracking-wider text-[#0c2340] mb-1">
+                    <label className="block text-[10px] font-black uppercase tracking-wider text-[#7a003c] mb-1">
                       Phone Number <span className="text-rose-500">*</span>
                     </label>
                     <input type="text" placeholder="e.g. +44 7123 456789" value={fields.phone}
@@ -212,7 +212,7 @@ export default function QuickLeadStrip({ context = "" }: QuickLeadStripProps) {
                 {/* Email & Country */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-[10px] font-black uppercase tracking-wider text-[#0c2340] mb-1">
+                    <label className="block text-[10px] font-black uppercase tracking-wider text-[#7a003c] mb-1">
                       Email Address <span className="text-rose-500">*</span>
                     </label>
                     <input type="email" placeholder="e.g. john@email.com" value={fields.email}
@@ -223,16 +223,16 @@ export default function QuickLeadStrip({ context = "" }: QuickLeadStripProps) {
 
                   {/* Country dropdown */}
                   <div className="relative" ref={dropdownRef}>
-                    <label className="block text-[10px] font-black uppercase tracking-wider text-[#0c2340] mb-1">
+                    <label className="block text-[10px] font-black uppercase tracking-wider text-[#7a003c] mb-1">
                       Your Country <span className="text-rose-500">*</span>
                     </label>
                     <div onClick={() => !loading && setIsOpen(!isOpen)}
                       className={`w-full h-11 px-4 rounded-xl border text-sm font-medium flex items-center justify-between cursor-pointer bg-white transition-all duration-200 ${
                         touched.country && errors.country
                           ? "border-rose-400"
-                          : "border-[#d0dce8] hover:border-[#1b6fa8]"
+                          : "border-[#d0dce8] hover:border-[#7a003c]"
                       } ${loading ? "opacity-60 cursor-not-allowed" : ""}`}>
-                      <span className={fields.country ? "text-[#0c2340]" : "text-[#9aafbf]"}>
+                      <span className={fields.country ? "text-[#7a003c]" : "text-[#9aafbf]"}>
                         {fields.country || "Select country"}
                       </span>
                       <svg className={`w-4 h-4 text-[#4a6480] transition-transform ${isOpen ? "rotate-180" : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -242,16 +242,16 @@ export default function QuickLeadStrip({ context = "" }: QuickLeadStripProps) {
                     {touched.country && errors.country && <p className="text-rose-500 text-[10px] font-semibold mt-0.5">⚠ {errors.country}</p>}
 
                     {isOpen && (
-                      <div className="absolute z-50 w-full mt-1 bg-white rounded-xl border border-[#d0dce8] shadow-[0_12px_30px_rgba(12,35,64,0.12)] flex flex-col max-h-52 overflow-hidden">
+                      <div className="absolute z-50 w-full mt-1 bg-white rounded-xl border border-[#d0dce8] shadow-[0_12px_30px_rgba(122,0,60,0.12)] flex flex-col max-h-52 overflow-hidden">
                         <div className="p-2 border-b border-slate-100 bg-slate-50">
                           <input type="text" placeholder="Search country..." value={search}
                             onChange={(e) => setSearch(e.target.value)} autoFocus
-                            className="w-full px-3 py-1.5 text-sm border border-slate-200 rounded-lg focus:outline-none focus:border-[#1b6fa8] bg-white" />
+                            className="w-full px-3 py-1.5 text-sm border border-slate-200 rounded-lg focus:outline-none focus:border-[#7a003c] bg-white" />
                         </div>
                         <ul className="overflow-y-auto flex-1 max-h-36 divide-y divide-slate-50">
                           {filtered.length > 0 ? filtered.map((c) => (
                             <li key={c} onClick={() => { setFields((p) => ({ ...p, country: c })); setErrors((p) => ({ ...p, country: "" })); setIsOpen(false); setSearch(""); }}
-                              className="px-4 py-2.5 text-sm text-slate-700 hover:bg-[#1b6fa8]/5 hover:text-[#1b6fa8] cursor-pointer font-medium">{c}</li>
+                              className="px-4 py-2.5 text-sm text-slate-700 hover:bg-[#7a003c]/5 hover:text-[#7a003c] cursor-pointer font-medium">{c}</li>
                           )) : <li className="px-4 py-3 text-xs text-slate-400 text-center">No countries found</li>}
                         </ul>
                       </div>
@@ -261,7 +261,7 @@ export default function QuickLeadStrip({ context = "" }: QuickLeadStripProps) {
 
                 {/* Submit */}
                 <button type="submit" disabled={loading}
-                  className="w-full h-12 rounded-xl font-black text-sm bg-[#f4c400] text-[#0c2340] hover:bg-[#0c2340] hover:text-white shadow-[0_6px_20px_rgba(244,196,0,0.35)] hover:shadow-[0_8px_26px_rgba(12,35,64,0.3)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-1">
+                  className="w-full h-12 rounded-xl font-black text-sm bg-[#f4c400] text-[#7a003c] hover:bg-[#7a003c] hover:text-white shadow-[0_6px_20px_rgba(244,196,0,0.35)] hover:shadow-[0_8px_26px_rgba(122,0,60,0.3)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 mt-1">
                   {loading ? (
                     <span className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin" />
                   ) : (

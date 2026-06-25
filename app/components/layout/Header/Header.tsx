@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { contact, navItems, reviewsData } from "../../../data/site";
+import { colors } from "../../../data/colors";
 import WhatsAppIcon from "../../ui/WhatsAppIcon";
 import ReviewCard, { ReviewProps } from "./ReviewCard";
 
@@ -28,26 +29,26 @@ function ReviewModal({ review, onClose }: { review: ReviewProps; onClose: () => 
 
   return createPortal(
     <div className="fixed inset-0 z-[999999] flex items-center justify-center p-4">
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0c2340]/75 via-[#0f3d6e]/65 to-[#0c2340]/75 backdrop-blur-md" onClick={onClose} />
-      <div className="relative z-10 w-full max-w-xl bg-white rounded-3xl shadow-[0_32px_80px_rgba(12,35,64,0.5)] overflow-hidden flex flex-col">
-        <div className="h-1.5 bg-gradient-to-r from-[#0c2340] via-[#1b6fa8] to-[#f4c400]" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#7a003c]/75 via-[#5a0028]/65 to-[#7a003c]/75 backdrop-blur-md" onClick={onClose} />
+      <div className="relative z-10 w-full max-w-xl bg-white rounded-3xl shadow-[0_32px_80px_rgba(122,0,60,0.5)] overflow-hidden flex flex-col">
+        <div className="h-1.5 bg-gradient-to-r from-[#7a003c] via-[#f4c400] to-[#f4c400]" />
         <button onClick={onClose} aria-label="Close review"
-          className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-[#f4f7fb] border border-[#d0dce8] text-[#4a6480] hover:bg-[#d0dce8] hover:text-[#0d3557] flex items-center justify-center transition-all duration-200 shadow-sm">
+          className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-[#f4f7fb] border border-[#d0dce8] text-[#4a6480] hover:bg-[#d0dce8] hover:text-[#7a003c] flex items-center justify-center transition-all duration-200 shadow-sm">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
             <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
           </svg>
         </button>
-        <div className="px-7 pt-6 pb-5 bg-gradient-to-br from-[#f5f8fd] to-white border-b border-[#d0dce8]/60">
+        <div className="px-7 pt-6 pb-5 bg-gradient-to-br from-[#fff5f8] to-white border-b border-[#d0dce8]/60">
           <div className="flex items-center gap-4">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#1b6fa8] to-[#0c2340] text-white font-black text-base grid place-items-center shadow-[0_6px_20px_rgba(27,111,168,0.35)] shrink-0 select-none">
+            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[#7a003c] to-[#5a0028] text-white font-black text-base grid place-items-center shadow-[0_6px_20px_rgba(122,0,60,0.35)] shrink-0 select-none">
               {getInitials(review.name)}
             </div>
             <div>
-              <h3 className="font-black text-[#0d3557] text-lg leading-tight">{review.name}</h3>
+              <h3 className="font-black text-[#7a003c] text-lg leading-tight">{review.name}</h3>
               <div className="flex items-center gap-2 mt-1 flex-wrap">
                 <div className="flex items-center gap-0.5">
                   {[...Array(5)].map((_, i) => (
-                    <svg key={i} className={`w-4 h-4 ${i < review.stars ? "fill-[#ffb400]" : "fill-[#d0dce8]"}`} viewBox="0 0 24 24">
+                    <svg key={i} className={`w-4 h-4 ${i < review.stars ? "fill-[#f4c400]" : "fill-[#d0dce8]"}`} viewBox="0 0 24 24">
                       <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
                     </svg>
                   ))}
@@ -64,14 +65,14 @@ function ReviewModal({ review, onClose }: { review: ReviewProps; onClose: () => 
         </div>
         <div className="px-7 py-6 max-h-[50vh] overflow-y-auto">
           <div className="flex gap-3 mb-4">
-            <div className="w-1 rounded-full bg-gradient-to-b from-[#1b6fa8] to-[#f4c400] shrink-0" />
-            <h4 className="font-black text-[#0d3557] text-base leading-snug italic">"{review.reviewTitle}"</h4>
+            <div className="w-1 rounded-full bg-gradient-to-b from-[#7a003c] to-[#f4c400] shrink-0" />
+            <h4 className="font-black text-[#7a003c] text-base leading-snug italic">"{review.reviewTitle}"</h4>
           </div>
           <p className="text-[#2d4a6b] text-sm leading-7 font-medium">{review.reviewBody}</p>
         </div>
-        <div className="px-7 py-5 bg-[#f5f8fd] border-t border-[#d0dce8]/60 flex items-center justify-between gap-3">
+        <div className="px-7 py-5 bg-[#fff5f8] border-t border-[#d0dce8]/60 flex items-center justify-between gap-3">
           <p className="text-xs text-[#4a6480] font-semibold">★ Review via Google</p>
-          <button onClick={onClose} className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-[#1b6fa8] to-[#0c2340] hover:from-[#0c2340] hover:to-[#0d3a6e] text-white font-black text-xs uppercase tracking-widest transition-all duration-300 shadow-[0_4px_14px_rgba(27,111,168,0.4)] active:scale-[0.97]">
+          <button onClick={onClose} className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-[#7a003c] to-[#5a0028] hover:from-[#5a0028] hover:to-[#7a003c] text-white font-black text-xs uppercase tracking-widest transition-all duration-300 shadow-[0_4px_14px_rgba(122,0,60,0.4)] active:scale-[0.97]">
             Close
           </button>
         </div>
@@ -108,7 +109,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="sticky top-0 left-0 right-0 z-[9999] bg-white/95 backdrop-blur-[18px] shadow-[0_4px_20px_rgba(12,35,64,0.15)]">
+      <header className="sticky top-0 left-0 right-0 z-[9999] bg-white/95 backdrop-blur-[18px] shadow-[0_4px_20px_rgba(122,0,60,0.15)]">
 
         {/* Review Banner */}
         <div className="bg-[#f4f7fb] border-b border-[#d0dce8] py-0 flex items-center overflow-hidden">
@@ -134,11 +135,11 @@ export default function Header() {
 
             <div className="flex items-center gap-1 shrink-0">
               <button onClick={() => setCurrentIndex((prev) => (prev === 0 ? reviewsData.length - 1 : prev - 1))}
-                className="w-7 h-7 rounded-lg border border-[#d0dce8] bg-white text-[#4a6480] hover:text-[#1b6fa8] hover:shadow-sm flex items-center justify-center transition-all" aria-label="Previous review">
+                className="w-7 h-7 rounded-lg border border-[#d0dce8] bg-white text-[#4a6480] hover:text-[#7a003c] hover:shadow-sm flex items-center justify-center transition-all" aria-label="Previous review">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="15 18 9 12 15 6" /></svg>
               </button>
               <button onClick={() => setCurrentIndex((prev) => (prev + 1) % reviewsData.length)}
-                className="w-7 h-7 rounded-lg border border-[#d0dce8] bg-white text-[#4a6480] hover:text-[#1b6fa8] hover:shadow-sm flex items-center justify-center transition-all" aria-label="Next review">
+                className="w-7 h-7 rounded-lg border border-[#d0dce8] bg-white text-[#4a6480] hover:text-[#7a003c] hover:shadow-sm flex items-center justify-center transition-all" aria-label="Next review">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><polyline points="9 18 15 12 9 6" /></svg>
               </button>
             </div>
@@ -146,7 +147,7 @@ export default function Header() {
         </div>
 
         {/* Top Action Bar */}
-        <div className="bg-gradient-to-r from-[#0c2340] to-[#1b6fa8]">
+        <div className="bg-gradient-to-r from-[#7a003c] to-[#5a0028]">
           <div className="w-full max-w-[1120px] mx-auto px-3 py-2">
             <div className="grid grid-cols-2 lg:grid-cols-5 gap-2 items-stretch">
 
@@ -167,9 +168,9 @@ export default function Header() {
                   <div className="absolute top-full left-0 mt-2 bg-white rounded-xl shadow-[0_20px_40px_rgba(0,0,0,0.35)] z-[1000] min-w-[215px] overflow-hidden border border-[#d0dce8]">
                     {officeNumbers.map((office) => (
                       <a key={office.city} href={office.href}
-                        className="flex flex-col px-4 py-3 text-[#192c42] border-b border-[#d0dce8]/60 last:border-b-0 hover:bg-gradient-to-r hover:from-[#f4f7fb] hover:to-white transition-all duration-150 group/item"
+                        className="flex flex-col px-4 py-3 text-[#192c42] border-b border-[#d0dce8]/60 last:border-b-0 hover:bg-gradient-to-r hover:from-[#fff5f8] hover:to-white transition-all duration-150 group/item"
                         onClick={() => { setSelectedOffice(office); setIsPhoneDropdownOpen(false); }}>
-                        <span className="font-black text-xs text-[#1b6fa8]">Office {office.city}</span>
+                        <span className="font-black text-xs text-[#7a003c]">Office {office.city}</span>
                         <span className="font-black text-sm mt-0.5 text-[#2d4a6b] flex items-center gap-1.5">
                           <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="text-[#00b67a] animate-pulse">
                             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1 22 16.92z" />
@@ -200,17 +201,17 @@ export default function Header() {
 
               {/* Check Eligibility */}
               <Link href="/eligibility/check"
-                className={`${topBtnBase} col-span-1 lg:col-span-1 bg-gradient-to-br from-[#f4c400] to-[#d4ab00] text-[#0c2340] hover:from-[#ffd214] hover:to-[#c29d00] font-black hover:shadow-[0_0_25px_rgba(244,196,0,0.45)]`}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" className="shrink-0 text-[#0c2340]">
+                className={`${topBtnBase} col-span-1 lg:col-span-1 bg-gradient-to-br from-[#f4c400] to-[#d4ab00] text-[#7a003c] hover:from-[#ffd214] hover:to-[#c29d00] font-black hover:shadow-[0_0_25px_rgba(244,196,0,0.45)]`}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" className="shrink-0 text-[#7a003c]">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                 </svg>
-                <span className="text-[#0c2340]">Check Eligibility</span>
+                <span className="text-[#7a003c]">Check Eligibility</span>
               </Link>
 
               {/* Free Consultation */}
               <div className="col-span-1 lg:col-span-1 w-full relative overflow-hidden rounded-xl">
                 <Link href="/contact"
-                  className={`${topBtnBase} bg-gradient-to-br from-[#1b6fa8] to-[#0c2340] border-2 border-[#f4c400] hover:from-[#13858e] hover:to-[#0c2340] animate-pulse hover:animate-none`}>
+                  className={`${topBtnBase} bg-gradient-to-br from-[#7a003c] to-[#5a0028] border-2 border-[#f4c400] hover:from-[#5a0028] hover:to-[#7a003c] animate-pulse hover:animate-none`}>
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="shrink-0 text-[#f4c400]">
                     <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2z" />
                   </svg>
@@ -226,16 +227,16 @@ export default function Header() {
         <div className="w-full max-w-[1120px] mx-auto px-4 flex items-center justify-between gap-6 py-0 border-b border-[#d0dce8]/60">
           <Link href="/" className="inline-flex items-center gap-4" aria-label="British Citizenship home">
             <div className="relative w-16 h-16 shrink-0">
-              <div className="w-16 h-16 bg-gradient-to-br from-[#0c2340] to-[#1b6fa8] rounded-xl flex items-center justify-center">
-                <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
-                  <rect width="40" height="40" rx="8" fill="white" fillOpacity="0.1"/>
-                  <path d="M20 5L35 12V20C35 28 20 35 20 35C20 35 5 28 5 20V12L20 5Z" fill="#f4c400" fillOpacity="0.9"/>
-                  <path d="M15 20L18 23L25 16" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+                <div className="w-16 h-16 bg-gradient-to-br from-[#7a003c] to-[#5a0028] rounded-xl flex items-center justify-center">
+                  <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
+                    <rect width="40" height="40" rx="8" fill="white" fillOpacity="0.1"/>
+                    <path d="M20 5L35 12V20C35 28 20 35 20 35C20 35 5 28 5 20V12L20 5Z" fill="#f4c400" fillOpacity="0.9"/>
+                    <path d="M15 20L18 23L25 16" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
               </div>
-            </div>
             <span>
-              <strong className="block text-lg sm:text-xl text-[#0d3557]">British Citizenship Solicitors</strong>
+              <strong className="block text-lg sm:text-xl text-[#7a003c]">British Citizenship Solicitors</strong>
               <small className="block text-[#4a6480] mt-0.5 text-xs sm:text-sm">Expert Legal Guidance for Your Journey</small>
             </span>
           </Link>
@@ -243,7 +244,7 @@ export default function Header() {
           <nav className="hidden lg:flex items-center gap-2 px-2 py-0 border border-[#d0dce8] rounded-full bg-[#f4f7fb]/80" aria-label="Primary navigation">
             {navItems.map((item) => (
               <Link key={item.href} href={item.href}
-                className="px-4 py-2.5 rounded-full text-[#192c42] font-extrabold text-sm transition-all duration-200 hover:bg-white hover:text-[#1b6fa8] hover:-translate-y-px hover:shadow-[0_8px_20px_rgba(12,35,64,0.08)]">
+                className="px-4 py-2.5 rounded-full text-[#192c42] font-extrabold text-sm transition-all duration-200 hover:bg-white hover:text-[#7a003c] hover:-translate-y-px hover:shadow-[0_8px_20px_rgba(122,0,60,0.08)]">
                 {item.label}
               </Link>
             ))}
@@ -262,11 +263,11 @@ export default function Header() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="lg:hidden bg-white border-t border-[#d0dce8] shadow-[0_8px_20px_rgba(12,35,64,0.1)]">
+          <div className="lg:hidden bg-white border-t border-[#d0dce8] shadow-[0_8px_20px_rgba(122,0,60,0.1)]">
             <nav className="w-full max-w-[1120px] mx-auto px-4 py-4 grid gap-2">
               {navItems.map((item) => (
                 <Link key={item.href} href={item.href} onClick={() => setIsMenuOpen(false)}
-                  className="px-4 py-3 rounded-xl font-bold text-[#192c42] hover:bg-[#f4f7fb] transition-colors">
+                  className="px-4 py-3 rounded-xl font-bold text-[#192c42] hover:bg-[#fff5f8] transition-colors">
                   {item.label}
                 </Link>
               ))}

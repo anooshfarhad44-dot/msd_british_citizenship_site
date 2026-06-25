@@ -3,6 +3,27 @@
 @theme {
   --font-sans: var(--font-primary), "Nunito Sans", sans-serif;
   --font-serif: var(--font-primary), "Nunito Sans", sans-serif;
+  
+  /* ========================================================================
+     PREMIUM LUXURY MAROON & GOLD PALETTE 
+     ======================================================================== */
+  /* Deep, rich burgundy tone (Slightly darker and desaturated for high-end corporate feel) */
+  --color-primary: #5c0626; 
+  /* Deep obsidian/wine mix for gradients, footers, and heavy hero backgrounds */
+  --color-primary-dark: #3a0216; 
+  
+  /* Refined champagne gold (Less yellow/harsh, more muted and premium) */
+  --color-secondary: #e5b842; 
+  /* Rich bronze/gold for clean borders and deep accents */
+  --color-secondary-dark: #c2962b; 
+  
+  /* TYPOGRAPHY BALANCE (Crucial for eye comfort) */
+  /* Deep charcoal/slate with a tiny hint of burgundy for content headers - NEVER pure bright maroon */
+  --color-text-primary: #1f1619; 
+  /* Soft slate gray for paragraphs and secondary details to give the eyes some rest */
+  --color-text-secondary: #4a5568; 
+  /* Perfect light gray for borders, placeholders, and subtle lines */
+  --color-text-muted: #94a3b8;
 }
 
 *,

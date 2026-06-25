@@ -20,7 +20,7 @@ export default function ToastProvider() {
         },
         success: {
           iconTheme: {
-            primary: "#1b6fa8",
+            primary: "#7a003c",
             secondary: "#ffffff",
           },
         },

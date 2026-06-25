@@ -103,7 +103,7 @@ export default function Footer() {
   const [activeBranch, setActiveBranch] = useState(officeBranches[0]);
 
   return (
-    <footer className="pt-16 pb-10 bg-gradient-to-br from-[#0c2340] to-[#1b4a7a] text-white relative overflow-hidden border-t border-[#1b6fa8]/30">
+    <footer className="pt-16 pb-10 bg-gradient-to-br from-[#7a003c] to-[#5a0028] text-white relative overflow-hidden border-t border-[#7a003c]/30">
       <style dangerouslySetInnerHTML={{
         __html: `
         @keyframes subtleFloat {
@@ -116,13 +116,13 @@ export default function Footer() {
       `}} />
 
       <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-[#f4c400]/5 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-[#1b6fa8]/10 blur-[80px] pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] rounded-full bg-[#7a003c]/10 blur-[80px] pointer-events-none" />
 
       <div className="w-full max-w-[1120px] mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 pb-12 border-b border-white/10">
 
           {/* Map */}
-          <div className="w-full h-[300px] sm:h-[340px] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/10 relative group bg-[#0c2340]">
+          <div className="w-full h-[300px] sm:h-[340px] rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/10 relative group bg-[#7a003c]">
             <iframe
               src={`https://maps.google.com/maps?q=${encodeURIComponent(activeBranch.mapQuery)}&t=&z=15&ie=UTF8&iwloc=&output=embed`}
               width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy"

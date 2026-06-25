@@ -67,7 +67,7 @@ function nextFrom(qid: string, value?: AnswerValue, answers?: Record<string, Ans
     // Q5 — English language exempt?
     case "q5":
       if (value === "Yes — I am exempt") return "q7";
-      if (value === "Yes — I have passed a SELT test") return "q7";
+      if (value === "Yes — I have passed a SELT B1 test") return "q7";
       if (value === "Yes — I passed it as part of my visa application") return "q7";
       return "q6";
 
@@ -219,7 +219,7 @@ const QUESTIONS: Record<string, { step?: number; title: string; subtitle?: strin
     subtitle: "Most applicants must pass a SELT test at B1 level or above, unless exempt.",
     answerKey: "englishMet",
     options: [
-      "Yes — I have passed a SELT test",
+      "Yes — I have passed a SELT B1 test ",
       "Yes — I passed it as part of my visa application",
       "Yes — I am exempt (age, disability, nationality, or qualification)",
       "No — I still need to sit the test",
@@ -227,7 +227,7 @@ const QUESTIONS: Record<string, { step?: number; title: string; subtitle?: strin
   },
   q6: {
     step: 7,
-    title: "Are you willing to sit and pass the SELT English test before applying?",
+    title: "Are you willing to sit and pass the SELT B1 English test before applying?",
     subtitle: "You must pass the test before submitting your citizenship application.",
     answerKey: "willSitEnglish",
     options: ["Yes", "No"],
@@ -323,7 +323,7 @@ export default function EligibilityChecker() {
       <button
         onClick={() => handleContinue(answerKey, val)}
         disabled={disabled}
-        className="inline-flex items-center gap-2 px-7 py-2.5 rounded-xl bg-gradient-to-r from-[#1b6fa8] to-[#0c2340] text-white font-black text-sm shadow-[0_6px_20px_rgba(27,111,168,0.3)] hover:-translate-y-0.5 hover:shadow-[0_10px_26px_rgba(27,111,168,0.4)] transition disabled:opacity-40 disabled:cursor-not-allowed disabled:translate-y-0"
+        className="inline-flex items-center gap-2 px-7 py-2.5 rounded-xl bg-gradient-to-r from-[#7a003c] to-[#7a003c] text-white font-black text-sm shadow-[0_6px_20px_rgba(27,111,168,0.3)] hover:-translate-y-0.5 hover:shadow-[0_10px_26px_rgba(27,111,168,0.4)] transition disabled:opacity-40 disabled:cursor-not-allowed disabled:translate-y-0"
       >
         {label}
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
@@ -337,12 +337,12 @@ export default function EligibilityChecker() {
         {options.map((opt) => {
           const checked = answers[answerKey] === opt;
           return (
-            <label key={opt} className={`flex items-center gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 group ${checked ? "border-[#1b6fa8] bg-[#e6f0f8]/50 shadow-[0_4px_14px_rgba(27,111,168,0.12)]" : "border-[#d0dce8] bg-white hover:border-[#1b6fa8]/40 hover:bg-[#f9fbfc]"}`}>
-              <div className={`shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all ${checked ? "border-[#1b6fa8] bg-[#1b6fa8]" : "border-[#d0dce8] group-hover:border-[#1b6fa8]/60"}`}>
+            <label key={opt} className={`flex items-center gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 group ${checked ? "border-[#7a003c] bg-[#e6f0f8]/50 shadow-[0_4px_14px_rgba(27,111,168,0.12)]" : "border-[#d0dce8] bg-white hover:border-[#7a003c]/40 hover:bg-[#f9fbfc]"}`}>
+              <div className={`shrink-0 w-5 h-5 rounded-full border-2 flex items-center justify-center transition-all ${checked ? "border-[#7a003c] bg-[#7a003c]" : "border-[#d0dce8] group-hover:border-[#7a003c]/60"}`}>
                 {checked && <div className="w-2 h-2 rounded-full bg-white" />}
               </div>
               <input type="radio" name={answerKey} checked={checked} onChange={() => updateAnswer(answerKey, opt)} className="sr-only" />
-              <span className={`text-sm font-semibold leading-snug ${checked ? "text-[#0c2340]" : "text-[#4a6480]"}`}>{opt}</span>
+              <span className={`text-sm font-semibold leading-snug ${checked ? "text-[#7a003c]" : "text-[#4a6480]"}`}>{opt}</span>
             </label>
           );
         })}
@@ -355,11 +355,11 @@ export default function EligibilityChecker() {
     return (
       <div className="mb-8">
         <div className="flex justify-between items-center mb-2">
-          <span className="text-xs font-black uppercase tracking-widest text-[#1b6fa8]">Step {step} of {TOTAL}</span>
+          <span className="text-xs font-black uppercase tracking-widest text-[#7a003c]">Step {step} of {TOTAL}</span>
           <span className="text-xs font-bold text-[#4a6480]">{pct}% complete</span>
         </div>
         <div className="h-2 bg-[#e6f0f8] rounded-full overflow-hidden">
-          <div className="h-full bg-gradient-to-r from-[#1b6fa8] to-[#f4c400] rounded-full transition-all duration-500" style={{ width: `${pct}%` }} />
+          <div className="h-full bg-gradient-to-r from-[#7a003c] to-[#f4c400] rounded-full transition-all duration-500" style={{ width: `${pct}%` }} />
         </div>
       </div>
     );
@@ -372,7 +372,7 @@ export default function EligibilityChecker() {
     return (
       <>
         {renderProgressBar(q.step ?? 1)}
-        <h2 className="text-xl md:text-2xl font-black text-[#0c2340] leading-snug">{q.title}</h2>
+        <h2 className="text-xl md:text-2xl font-black text-[#7a003c] leading-snug">{q.title}</h2>
         {q.subtitle && <p className="text-[#4a6480] text-sm leading-relaxed mt-2">{q.subtitle}</p>}
         {q.options && renderOptions(q.answerKey, q.options)}
         <div className="flex items-center justify-between gap-4 mt-8 pt-5 border-t border-[#d0dce8]/60">
@@ -395,7 +395,7 @@ export default function EligibilityChecker() {
         {/* Header */}
         {isQuestion && (
           <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#1b6fa8]/10 text-[#1b6fa8] font-extrabold text-xs tracking-widest uppercase mb-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#7a003c]/10 text-[#7a003c] font-extrabold text-xs tracking-widest uppercase mb-3">
               🇬🇧 British Citizenship Eligibility Checker
             </div>
             <p className="text-[#4a6480] text-sm max-w-lg mx-auto">
@@ -406,7 +406,7 @@ export default function EligibilityChecker() {
 
         {/* Card */}
         <div className="bg-white rounded-3xl border border-[#d0dce8] shadow-[0_12px_40px_rgba(12,35,64,0.08)] p-7 md:p-10 relative overflow-hidden">
-          <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#0c2340] via-[#1b6fa8] to-[#f4c400]" />
+          <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#7a003c] via-[#7a003c] to-[#f4c400]" />
 
           {/* Question */}
           {isQuestion && renderQuestion(current)}
@@ -422,7 +422,7 @@ export default function EligibilityChecker() {
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ecfdf5] text-[#0c7a4a] font-black text-xs uppercase tracking-widest mb-3">
                   ✓ Likely Eligible
                 </div>
-                <h2 className="text-2xl md:text-3xl font-black text-[#0c2340] mb-3">You appear to meet the eligibility criteria</h2>
+                <h2 className="text-2xl md:text-3xl font-black text-[#7a003c] mb-3">You appear to meet the eligibility criteria</h2>
                 <p className="text-[#4a6480] leading-relaxed max-w-md mx-auto text-sm">
                   Based on your answers, you are likely eligible to apply for British Citizenship. Complete the form below to book your free consultation with one of our solicitors.
                 </p>
@@ -438,7 +438,7 @@ export default function EligibilityChecker() {
               </div>
 
               <div className="flex justify-center mt-6">
-                <button onClick={reset} className="inline-flex items-center gap-1.5 text-sm font-bold text-[#4a6480] hover:text-[#1b6fa8] transition-colors">
+                <button onClick={reset} className="inline-flex items-center gap-1.5 text-sm font-bold text-[#4a6480] hover:text-[#7a003c] transition-colors">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg>
                   Start the checker again
                 </button>
@@ -457,7 +457,7 @@ export default function EligibilityChecker() {
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#fff4f0] text-[#c2410c] font-black text-xs uppercase tracking-widest mb-3">
                   Not Currently Eligible
                 </div>
-                <h2 className="text-xl md:text-2xl font-black text-[#0c2340] mb-3">
+                <h2 className="text-xl md:text-2xl font-black text-[#7a003c] mb-3">
                   {INELIGIBLE[current]?.title}
                 </h2>
                 <p className="text-[#4a6480] leading-relaxed max-w-md mx-auto text-sm mb-4">
@@ -481,7 +481,7 @@ export default function EligibilityChecker() {
               </div>
 
               <div className="flex justify-center mt-6">
-                <button onClick={reset} className="inline-flex items-center gap-1.5 text-sm font-bold text-[#4a6480] hover:text-[#1b6fa8] transition-colors">
+                <button onClick={reset} className="inline-flex items-center gap-1.5 text-sm font-bold text-[#4a6480] hover:text-[#7a003c] transition-colors">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg>
                   Start the checker again
                 </button>
@@ -496,7 +496,7 @@ export default function EligibilityChecker() {
                 <div className="w-20 h-20 bg-gradient-to-br from-[#c2410c] to-[#9a3412] rounded-full flex items-center justify-center mx-auto mb-5">
                   <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                 </div>
-                <h2 className="text-2xl font-black text-[#0c2340] mb-3">You may not be eligible yet</h2>
+                <h2 className="text-2xl font-black text-[#7a003c] mb-3">You may not be eligible yet</h2>
                 <p className="text-[#4a6480] max-w-md mx-auto text-sm leading-relaxed">
                   Based on your answers, you do not currently meet all the requirements. Our solicitors can review your full circumstances and advise on your options and next steps.
                 </p>
@@ -507,7 +507,7 @@ export default function EligibilityChecker() {
                 context="Eligibility Checker — NOT ELIGIBLE (generic)"
               />
               <div className="flex justify-center mt-6">
-                <button onClick={reset} className="inline-flex items-center gap-1.5 text-sm font-bold text-[#4a6480] hover:text-[#1b6fa8] transition-colors">
+                <button onClick={reset} className="inline-flex items-center gap-1.5 text-sm font-bold text-[#4a6480] hover:text-[#7a003c] transition-colors">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg>
                   Start the checker again
                 </button>

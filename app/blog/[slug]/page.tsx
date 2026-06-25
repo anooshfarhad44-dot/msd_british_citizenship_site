@@ -14,7 +14,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="py-16 bg-gradient-to-br from-[#0c2340] to-[#1b6fa8] text-white">
+      <section className="py-16 bg-gradient-to-br from-[#7a003c] to-[#7a003c] text-white">
         <div className="w-full max-w-[800px] mx-auto px-4">
           <Link href="/blog" className="inline-flex items-center gap-2 text-white/70 hover:text-white font-bold text-sm mb-6 transition-colors">
             ← Back to Blog
@@ -30,17 +30,17 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       {/* Content */}
       <section className="py-16 bg-white">
         <div className="w-full max-w-[800px] mx-auto px-4">
-          <div className="aspect-[16/9] bg-gradient-to-br from-[#0c2340] to-[#1b6fa8] rounded-2xl flex items-center justify-center mb-10">
+          <div className="aspect-[16/9] bg-gradient-to-br from-[#7a003c] to-[#7a003c] rounded-2xl flex items-center justify-center mb-10">
             <span className="text-8xl">🇬🇧</span>
           </div>
           <div
             className="prose prose-lg max-w-none text-[#4a6480]"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
-          <div className="mt-12 p-8 bg-gradient-to-br from-[#0c2340] to-[#1b6fa8] rounded-2xl text-white text-center">
+          <div className="mt-12 p-8 bg-gradient-to-br from-[#7a003c] to-[#7a003c] rounded-2xl text-white text-center">
             <h3 className="text-xl font-bold mb-3">Need help with your citizenship application?</h3>
             <p className="text-white/80 mb-6">Our expert solicitors are ready to assist you through every step of the process.</p>
-            <Link href="/contact" className="inline-flex items-center justify-center min-h-[48px] px-8 py-3 rounded-full font-extrabold bg-[#f4c400] text-[#0c2340] hover:-translate-y-0.5 transition-all duration-200">
+            <Link href="/contact" className="inline-flex items-center justify-center min-h-[48px] px-8 py-3 rounded-full font-extrabold bg-[#f4c400] text-[#7a003c] hover:-translate-y-0.5 transition-all duration-200">
               Book a free consultation
             </Link>
           </div>

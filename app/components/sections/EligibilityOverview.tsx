@@ -7,13 +7,13 @@ export default function EligibilityOverview() {
       <div className="w-full max-w-[1120px] mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-10">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#0c2340] m-0">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#7a003c] m-0">
             British <span className="text-[#f4c400]">Citizenship</span> Eligibility
           </h2>
-          <div className="w-14 h-0.5 bg-gradient-to-r from-[#1b6fa8] to-[#f4c400] rounded-full mx-auto mt-4" />
+          <div className="w-14 h-0.5 bg-gradient-to-r from-[#7a003c] to-[#f4c400] rounded-full mx-auto mt-4" />
         </div>
 
-        <p className="text-center text-lg text-[#0c2340] max-w-[900px] mx-auto mb-12 leading-relaxed">
+        <p className="text-center text-lg text-[#7a003c] max-w-[900px] mx-auto mb-12 leading-relaxed">
           There are several routes to apply for British Citizenship. For each application, you must meet
           different eligibility requirements. Below are the main routes and what you will need to demonstrate.
         </p>
@@ -23,13 +23,13 @@ export default function EligibilityOverview() {
           {eligibilityRoutes.map((route, index) => (
             <div
               key={index}
-              className="flex items-center gap-4 p-4 md:p-5 bg-white border-[1.5px] border-[#1b6fa8] rounded-2xl font-bold text-[#0c2340] shadow-[0_4px_12px_rgba(12,35,64,0.04)] hover:-translate-y-1 hover:border-[#f4c400] hover:shadow-[0_12px_32px_rgba(12,35,64,0.08)] transition-all duration-300"
+              className="flex items-center gap-4 p-4 md:p-5 bg-white border-[1.5px] border-[#7a003c] rounded-2xl font-bold text-[#7a003c] shadow-[0_4px_12px_rgba(12,35,64,0.04)] hover:-translate-y-1 hover:border-[#f4c400] hover:shadow-[0_12px_32px_rgba(12,35,64,0.08)] transition-all duration-300"
             >
               <div className="w-12 h-12 grid place-items-center bg-[#f4c400] rounded-xl shrink-0">
                 <span className="text-2xl">{route.icon}</span>
               </div>
               <div>
-                <div className="font-black text-[#0c2340] text-sm mb-1">{route.title}</div>
+                <div className="font-black text-[#7a003c] text-sm mb-1">{route.title}</div>
                 <span className="text-xs font-medium text-[#4a6480] leading-relaxed">{route.text}</span>
               </div>
             </div>
@@ -40,12 +40,12 @@ export default function EligibilityOverview() {
         <div className="text-center flex flex-col items-center gap-5 mb-14">
           <div className="flex gap-3 flex-wrap justify-center">
             {["⚡ Takes 2 Minutes", "💎 100% Free", "🛡️ No Obligation"].map((b) => (
-              <span key={b} className="text-sm font-bold text-[#1b6fa8] bg-[#f4c400]/10 px-4 py-1.5 rounded-full border border-[#f4c400]/30">{b}</span>
+              <span key={b} className="text-sm font-bold text-[#7a003c] bg-[#f4c400]/10 px-4 py-1.5 rounded-full border border-[#f4c400]/30">{b}</span>
             ))}
           </div>
           <Link
             href="/eligibility/check"
-            className="inline-flex items-center justify-center px-12 py-4 bg-gradient-to-br from-[#f4c400] to-[#f6a700] text-[#0c2340] text-xl font-extrabold rounded-full shadow-[0_12px_36px_rgba(244,196,0,0.3)] hover:-translate-y-1 hover:shadow-[0_18px_48px_rgba(244,196,0,0.4)] transition-all duration-300"
+            className="inline-flex items-center justify-center px-12 py-4 bg-gradient-to-br from-[#f4c400] to-[#f6a700] text-[#7a003c] text-xl font-extrabold rounded-full shadow-[0_12px_36px_rgba(244,196,0,0.3)] hover:-translate-y-1 hover:shadow-[0_18px_48px_rgba(244,196,0,0.4)] transition-all duration-300"
           >
             Check Your Eligibility Now
           </Link>

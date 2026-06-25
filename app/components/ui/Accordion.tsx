@@ -32,17 +32,17 @@ export default function Accordion({ items, singleOpen = false }: Props) {
         <div
           key={i}
           className={`w-full bg-white border rounded-2xl overflow-hidden transition-all duration-300 ${
-            open[i] ? "border-[#1b6fa8] shadow-[0_10px_30px_rgba(12,35,64,0.06)]" : "border-[#d0dce8]"
+            open[i] ? "border-[#7a003c] shadow-[0_10px_30px_rgba(12,35,64,0.06)]" : "border-[#d0dce8]"
           }`}
         >
           <button
             type="button"
             aria-expanded={!!open[i]}
             onClick={() => toggle(i)}
-            className="w-full flex items-center gap-4 px-6 py-5 bg-transparent border-0 cursor-pointer text-left hover:bg-[#0c2340]/[0.02] transition-colors"
+            className="w-full flex items-center gap-4 px-6 py-5 bg-transparent border-0 cursor-pointer text-left hover:bg-[#7a003c]/[0.02] transition-colors"
           >
             <span
-              className={`w-8 h-8 grid place-items-center bg-[#f4c400] text-[#0c2340] rounded-full shrink-0 transition-transform duration-300 ${
+              className={`w-8 h-8 grid place-items-center bg-[#f4c400] text-[#7a003c] rounded-full shrink-0 transition-transform duration-300 ${
                 open[i] ? "rotate-180" : ""
               }`}
               aria-hidden
@@ -51,7 +51,7 @@ export default function Accordion({ items, singleOpen = false }: Props) {
                 <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </span>
-            <span className="text-base font-bold text-[#0c2340] text-left">{it.title}</span>
+            <span className="text-base font-bold text-[#7a003c] text-left">{it.title}</span>
           </button>
           <div
             className={`transition-all duration-300 overflow-hidden ${open[i] ? "max-h-[1000px] py-3" : "max-h-0"}`}
