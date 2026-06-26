@@ -1,34 +1,22 @@
 import HomeHero from "./components/sections/HomeHero";
-import QuickLeadStrip from "./components/sections/QuickLeadStrip";
-import TrustSection from "./components/sections/TrustSection";
-import EligibilityOverview from "./components/sections/EligibilityOverview";
-import CtaStrip from "./components/sections/CtaStrip";
-import AboutSection from "./components/sections/AboutSection";
-import CitizenshipInfoSection from "./components/sections/CitizenshipInfoSection";
-import EligibilityCriteria from "./components/sections/EligibilityCriteria";
-import ProcessSection from "./components/sections/ProcessSection";
-import ProcessLeadSection from "./components/sections/ProcessLeadSection";
-import FaqSection from "./components/sections/FaqSection";
 import FinalCta from "./components/sections/FinalCta";
+import NewTrustSection from "./components/sections/NewTrustSection";
+import NewEligibilitySection from "./components/sections/NewEligibilitySection";
+import NewProcessSection from "./components/sections/NewProcessSection";
+import NewTestimonialsSection from "./components/sections/NewTestimonialsSection";
+import NewFaqSection from "./components/sections/NewFaqSection";
+import NewLeadSection from "./components/sections/NewLeadSection";
 
 export default function Home() {
   return (
     <div>
       <HomeHero />
-      <QuickLeadStrip context="Home page" />
-      <TrustSection />
-      <EligibilityOverview />
-      <CtaStrip />
-      <AboutSection />
-      <CitizenshipInfoSection />
-      <EligibilityCriteria />
-      <ProcessSection />
-      <ProcessLeadSection
-        heading="Ready to Start Your Citizenship Application?"
-        description="Our solicitors will assess your eligibility, identify the right route, and guide you through every step of your British Citizenship application."
-        context="Home page enquiry"
-      />
-      <FaqSection />
+      <NewLeadSection context="Home page" />
+      <NewTrustSection />
+      <NewEligibilitySection />
+      <NewProcessSection />
+      <NewTestimonialsSection />
+      <NewFaqSection />
       <FinalCta />
     </div>
   );
