@@ -13,6 +13,14 @@ export const parentSite = {
   url: "https://www.msdsolicitors.co.uk/",
 };
 
+export const officialResources = {
+  ukGovCitizenship: {
+    name: "UK Government: British Citizenship",
+    url: "https://www.gov.uk/british-citizenship",
+    description: "Official UK government guidance on British citizenship eligibility, application process, and requirements.",
+  },
+};
+
 export const navItems = [
   { href: "/", label: "Home" },
   { href: "/eligibility", label: "Eligibility" },
@@ -346,5 +354,134 @@ export const blogPosts: BlogPost[] = [
         </div>
       </div>
     `,
+  },
+];
+
+
+
+export const solicitorFees = [
+   {
+    label: "British Citizenship Application (ILR/Settled Status)",
+    price: "£600 – £1,000",
+    isMain: true, // Isko true kar diya taake yeh highlight ho
+  },
+  {
+    label: "British Citizenship Application (Spouse Route)",
+    price: "£600 – £1,000",
+    isMain: false, // Isko false kar diya
+  },
+ 
+  {
+    label: "British Citizenship with Permanent Residence",
+    price: "£600 – £1,000",
+    isMain: false,
+  },
+  {
+    label: "Citizenship Application Review & Advice",
+    price: "£300 – £500",
+    isMain: false,
+  },
+  {
+    label: "Document Checking Service",
+    price: "£250 – £400",
+    isMain: false,
+  },
+  {
+    label: "Refusal Review & Next Steps",
+    price: "Contact us for a quote",
+    isMain: false,
+  },
+];
+
+export const homeOfficeFees = [
+  // Primary Applications
+  {
+    label: "Naturalisation (British Citizenship - Adult)",
+    price: "£1,605",
+    note: "Home Office fee",
+  },
+  {
+    label: "Nationality Registration as a British Citizen – Adult",
+    price: "£1,446",
+    note: "Home Office fee",
+  },
+  {
+    label: "Nationality Registration as a British Citizen – Child",
+    price: "£1,214",
+    note: "No fee increase applied",
+  },
+  {
+    label: "Naturalisation (British Overseas Territory Citizens)",
+    price: "£1,070",
+    note: "Home Office fee",
+  },
+  {
+    label: "Nationality Registration – BOTC, BOC, British Subjects, BPP – Adult",
+    price: "£964",
+    note: "British Overseas Territory / Overseas Citizens status",
+  },
+  {
+    label: "Nationality Registration – BOTC, BOC, British Subjects, BPP – Child",
+    price: "£810",
+    note: "No fee increase applied",
+  },
+  // Ceremonies & Oaths
+  {
+    label: "Citizenship Ceremony Arrangement",
+    price: "£130",
+    note: "Includes administration of oath and pledge at ceremony",
+  },
+  {
+    label: "Administration of Citizenship Oath / Pledge (Outside Ceremony)",
+    price: "£5",
+    note: "When not administered at a ceremony or by a JP",
+  },
+  // Legal & Auxiliary Status Fees
+  {
+    label: "Certificate of Entitlement (Nationality Right of Abode in the UK)",
+    price: "£589",
+    note: "Home Office fee",
+  },
+  {
+    label: "Renunciation of British Nationality",
+    price: "£482",
+    note: "Home Office fee",
+  },
+  {
+    label: "Official Nationality Review",
+    price: "£482",
+    note: "Home Office case review fee",
+  },
+  {
+    label: "Status Letter (Nationality)",
+    price: "£459",
+    note: "Official verification of status",
+  },
+  {
+    label: "Non-acquisition Letter (Nationality)",
+    price: "£459",
+    note: "Official declaration of non-acquisition",
+  },
+  // Certificate Corrections & Replacements
+  {
+    label: "Nationality Correction to Certificate",
+    price: "£428",
+    note: "Amendment administration fee",
+  },
+  {
+    label: "Reissued Nationality Certificate",
+    price: "£428",
+    note: "Replacement certificate fee",
+  },
+  {
+    label: "Certified Copy Supply",
+    price: "£428",
+    note: "Of a notice, certificate, order, or declaration",
+  },
+  // Essential Third-Party
+  {
+    label: "Life in the UK Test",
+    price: "£50",
+    note: "Per sitting (Third-party testing fee)",
   },
 ];

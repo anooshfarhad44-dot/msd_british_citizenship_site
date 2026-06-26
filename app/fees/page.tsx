@@ -2,61 +2,8 @@ import Link from "next/link";
 import Reveal from "../components/ui/Reveal";
 import NewLeadSection from "../components/sections/NewLeadSection";
 
-const solicitorFees = [
-  {
-    label: "British Citizenship Application (Spouse Route)",
-    price: "£600 – £1,000",
-    isMain: true,
-  },
-  {
-    label: "British Citizenship Application (ILR/Settled Status)",
-    price: "£600 – £1,000",
-    isMain: false,
-  },
-  {
-    label: "British Citizenship with Permanent Residence",
-    price: "£600 – £1,000",
-    isMain: false,
-  },
-  {
-    label: "Citizenship Application Review & Advice",
-    price: "£300 – £500",
-    isMain: false,
-  },
-  {
-    label: "Document Checking Service",
-    price: "£250 – £400",
-    isMain: false,
-  },
-  {
-    label: "Refusal Review & Next Steps",
-    price: "Contact us for a quote",
-    isMain: false,
-  },
-];
-
-const homeOfficeFees = [
-  {
-    label: "British Citizenship (Naturalisation)",
-    price: "£1,500",
-    note: "Home Office fee",
-  },
-  {
-    label: "British Citizenship (Registration)",
-    price: "£1,214",
-    note: "Home Office fee",
-  },
-  {
-    label: "Citizenship Ceremony",
-    price: "£80",
-    note: "Local authority fee",
-  },
-  {
-    label: "Life in the UK Test",
-    price: "£50",
-    note: "Per sitting",
-  },
-];
+// Data arrays imported safely from your main mock / configuration data file
+import { solicitorFees, homeOfficeFees } from "../data/site"; 
 
 export default function FeesPage() {
   return (
@@ -139,7 +86,7 @@ export default function FeesPage() {
                   Home Office & Third-Party Fees
                 </h2>
                 <p className="text-[#4a6480] text-sm md:text-base max-w-2xl mx-auto">
-                  These fees are paid directly to the Home Office or relevant authority.
+                  These fees are paid directly to the Home Office or relevant authority. All prices reflect current statutory rates.
                 </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -168,7 +115,7 @@ export default function FeesPage() {
                 Please Note
               </strong>
               <p className="text-[#556b6e] text-xs m-0">
-                Fees quoted are indicative. Home Office fees are subject to change. Our solicitor fees will be confirmed after an initial case review. We are transparent about all costs from the outset.
+                Fees quoted are indicative statutory application costs dictated by the Home Office. Our solicitor fees will be confirmed following an initial assessment. We remain entirely transparent about all potential costs from day one.
               </p>
             </div>
 

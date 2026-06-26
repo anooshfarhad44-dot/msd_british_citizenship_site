@@ -213,7 +213,7 @@ export default function Footer() {
           <p className="text-[11px] sm:text-xs text-white/45 leading-relaxed max-w-4xl mx-auto font-normal antialiased tracking-wide">
             Masaud Solicitors Limited T/A MSD Solicitors is authorised and regulated by the Solicitors Regulation Authority (SRA No: 666682).
             Masaud Solicitors Limited is registered in England and Wales with registration number 12303416.
-            VAT Registration No. 396387633. The registered office address is Suite 5, Woolwich House, 61 Mosley Street, Manchester, M2 3HZ.
+            VAT Registration No. 396387633. The registered office address is  Suite 2, First Floor, 6 Oldham Road, Manchester, M4 5DB.
             <span className="font-bold text-[#f4c400] block sm:inline sm:ml-1.5 whitespace-nowrap">We do not accept service by email or fax.</span>
           </p>
         </div>

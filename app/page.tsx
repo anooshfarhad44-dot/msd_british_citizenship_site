@@ -6,6 +6,7 @@ import NewProcessSection from "./components/sections/NewProcessSection";
 import NewTestimonialsSection from "./components/sections/NewTestimonialsSection";
 import NewFaqSection from "./components/sections/NewFaqSection";
 import NewLeadSection from "./components/sections/NewLeadSection";
+import OfficialResources from "./components/sections/OfficialResources";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <NewProcessSection />
       <NewTestimonialsSection />
       <NewFaqSection />
+      <OfficialResources />
       <FinalCta />
     </div>
   );

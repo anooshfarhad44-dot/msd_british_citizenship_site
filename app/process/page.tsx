@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Reveal from "../components/ui/Reveal";
 import NewLeadSection from "../components/sections/NewLeadSection";
+import OfficialResources from "../components/sections/OfficialResources";
 import { processSteps } from "../data/site";
 
 export default function ProcessPage() {
@@ -109,6 +110,8 @@ export default function ProcessPage() {
           </Reveal>
         </div>
       </section>
+
+      <OfficialResources />
 
       <section className="py-12 bg-gradient-to-br from-[#7a003c] to-[#5a0028]">
         <div className="w-full max-w-6xl mx-auto px-4">
