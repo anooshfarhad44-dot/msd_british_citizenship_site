@@ -191,13 +191,55 @@ export const citizenshipRoutes = [
   },
 ];
 
+import bc1 from "@/public/images/ReviewImgs/bc1.png";
+import bc2 from "@/public/images/ReviewImgs/bc2.png";
+import bc3 from "@/public/images/ReviewImgs/bc3.png";
+import bc4 from "@/public/images/ReviewImgs/bc4.png";
+import bc7 from "@/public/images/ReviewImgs/bc7.png";
+
 export const reviewsData = [
   {
-    name: "Kate Adjei",
-    date: "7 months ago",
-    reviewTitle: "Excellent support with British citizenship",
+    name: "Edith Oginga",
+    date: "4 weeks ago",
+    reviewTitle: "Excellent spouse visa support",
     reviewBody:
-      "Zain Khan was fantastic throughout our British citizenship application. His knowledge and patience made a complex process feel manageable. We are so grateful to MSD Solicitors for helping us achieve a successful outcome.",
+      "I would highly recommend Ravindi from MSD Solicitors for anyone going through the spouse visa process. From the very beginning, she was professional, supportive, patient, and always willing to answer our questions and explain everything clearly.",
+    stars: 5,
+    image: bc1,
+  },
+  {
+    name: "uche okonkwo",
+    date: "4 months ago",
+    reviewTitle: "Remarkable immigration result",
+    reviewBody:
+      "MSD Solicitors delivered a remarkable result. Hamza Khan showed commitment, professionalism, and genuine interest throughout my immigration case, leading to a successful outcome.",
+    stars: 5,
+    image: bc2,
+  },
+  {
+    name: "Jominder Duggal",
+    date: "6 months ago",
+    reviewTitle: "Helpful and responsive service",
+    reviewBody:
+      "Mr Hamza was very helpful throughout my application process and delivered successful results. Tasnim was also very supportive whenever I needed assistance.",
+    stars: 5,
+    image: bc3,
+  },
+  {
+    name: "Osama Shinwari",
+    date: "7 months ago",
+    reviewTitle: "Successful asylum appeal",
+    reviewBody:
+      "Mr Hamza Khan handled my asylum appeal with great care and attention. Thanks to his hard work and detailed submissions, my asylum was granted successfully.",
+    stars: 5,
+    image: bc4,
+  },
+  {
+    name: "Omar Zribi",
+    date: "1 year ago",
+    reviewTitle: "Exceptional immigration service",
+    reviewBody:
+      "Mohammad Javed and the MSD Solicitors team provided exceptional service and guidance throughout my wife's immigration process.",
     stars: 5,
     image: null,
   },
@@ -206,48 +248,20 @@ export const reviewsData = [
     date: "1 year ago",
     reviewTitle: "Professional and knowledgeable team",
     reviewBody:
-      "I had the pleasure of working with Mohammad Javed and Izzah Muneer at MSD Solicitors for my British citizenship application. They were professional, knowledgeable, and incredibly supportive throughout the process. My application was successful.",
+      "I had the pleasure of working with Mohammad Javed and Izzah Muneer at MSD Solicitors for my spouse visa application. Their professionalism and support were outstanding.",
     stars: 5,
     image: null,
   },
   {
-    name: "Chengxi Sun",
-    date: "10 months ago",
-    reviewTitle: "Patient and thorough service",
+    name: "ANILA KENNEL",
+    date: "Edited a month ago",
+    reviewTitle: "Daughter visa approved",
     reviewBody:
-      "Zain helped me with my citizenship application. My case was complex but we got there in the end. He was very patient with all my concerns and worked diligently. Thank you for everything.",
+      "Big thanks to Mr Zain. He explained the process clearly and helped us prepare a strong application. My daughter's visa has now been granted successfully.",
     stars: 5,
-    image: null,
-  },
-  {
-    name: "Erika Anderson",
-    date: "5 months ago",
-    reviewTitle: "Great experience with MSD",
-    reviewBody:
-      "I had a great experience with MSD when applying for British citizenship. Lauren Risdale was incredibly helpful, responsive, and patient throughout the application process.",
-    stars: 5,
-    image: null,
-  },
-  {
-    name: "Gayane Ohanyan",
-    date: "3 years ago",
-    reviewTitle: "Successfully received British citizenship",
-    reviewBody:
-      "I recently received my British citizenship thanks to Masaud Solicitors. They made the process much easier. Special thanks to Fatima Haroon for her amazing support.",
-    stars: 5,
-    image: null,
-  },
-  {
-    name: "Paul Taylor",
-    date: "2 years ago",
-    reviewTitle: "Outstanding citizenship application service",
-    reviewBody:
-      "I used MSD Solicitors to coordinate our British citizenship application. The service was excellent and great value. They guided us through the whole process and today we received the good news it had been accepted. Would definitely recommend.",
-    stars: 5,
-    image: null,
+    image: bc7,
   },
 ];
-
 export const faqs = [
   {
     q: "Can I pay for British citizenship in instalments?",
