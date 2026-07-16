@@ -319,7 +319,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
-import { usePathname } from "next/navigation"; // Pathname detect karne ke liye hook import kiya
+import { usePathname } from "next/navigation";
 import { createPortal } from "react-dom";
 import { contact, navItems, reviewsData } from "../../../data/site";
 import WhatsAppIcon from "../../ui/WhatsAppIcon";
@@ -411,8 +411,6 @@ export default function Header() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeModalReview, setActiveModalReview] = useState<ReviewProps | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  
-  // hook call kiya current path decode karne ke liye
   const pathname = usePathname();
 
   const getInitials = (name: string) =>
@@ -447,6 +445,11 @@ export default function Header() {
           0% { transform: translateX(-150%) skewX(-25deg); }
           100% { transform: translateX(150%) skewX(-25deg); }
         }
+        /* Naye Floating keyframes Google & Trustpilot ke liye */
+        @keyframes subtleFloat {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-3px); }
+        }
         .animate-btn-pulse {
           animation: customPulse 2.5s infinite ease-in-out;
         }
@@ -465,6 +468,14 @@ export default function Header() {
           );
           transform: translateX(-150%) skewX(-25deg);
           animation: customShimmer 3.5s infinite ease-in-out;
+        }
+        /* Trust Badges ki styling classes */
+        .animate-float-google {
+          animation: subtleFloat 4s infinite ease-in-out;
+        }
+        .animate-float-trustpilot {
+          animation: subtleFloat 4s infinite ease-in-out;
+          animation-delay: 2s; /* 2s delay taake dono ek sath upar niche na hon balki natural lagein */
         }
       `}</style>
 
@@ -494,20 +505,18 @@ export default function Header() {
             </div>
           </Link>
 
-          {/* 2. Center: Desktop Main Navigation with active path highlighter */}
+          {/* 2. Center: Desktop Main Navigation */}
           <nav className="hidden lg:flex items-center gap-1 border border-[#e5eaf0] px-1.5 py-1 rounded-2xl bg-[#f8fafc]" aria-label="Primary navigation">
             {navItems.map((item) => {
-              // Check kar raha hai ke current path exact match karta hai ya nahi
               const isActive = pathname === item.href;
-
               return (
                 <Link 
                   key={item.href} 
                   href={item.href}
                   className={`px-3.5 py-2 rounded-xl font-extrabold text-[13px] tracking-tight transition-all duration-200 
                     ${isActive 
-                      ? "bg-white text-[#7a003c] shadow-sm"  // Selected (Active) State design (same as hover background)
-                      : "text-[#2d4a6b] hover:bg-white hover:text-[#7a003c] hover:shadow-sm" // Normal/Hover state
+                      ? "bg-white text-[#7a003c] shadow-sm"
+                      : "text-[#2d4a6b] hover:bg-white hover:text-[#7a003c] hover:shadow-sm"
                     }`}
                 >
                   {item.label}
@@ -544,14 +553,14 @@ export default function Header() {
               )}
             </div>
 
-            {/* Direct WhatsApp Pill with Gentle Hover Pulse & Active Bounce */}
+            {/* Direct WhatsApp Pill */}
             <a href={contact.whatsappHref} target="_blank" rel="noopener noreferrer"
               className="relative overflow-hidden flex items-center justify-center gap-1.5 h-10 px-4 rounded-xl text-xs font-black text-white bg-gradient-to-r from-[#25D366] to-[#128C7E] hover:scale-[1.05] active:scale-95 hover:shadow-md transition-all duration-300 animate-shimmer-sweep">
               <WhatsAppIcon className="w-3.5 h-3.5" />
               <span>WhatsApp</span>
             </a>
 
-            {/* Premium "Free Consultation" CTA Button with Heartbeat Pulse & Shiny Shimmer */}
+            {/* Premium "Free Consultation" CTA Button */}
             <Link href="/contact"
               className="relative overflow-hidden flex items-center justify-center h-10 px-5 rounded-xl text-xs font-black uppercase tracking-wider text-white bg-gradient-to-r from-[#7a003c] to-[#5a0028] hover:brightness-110 active:scale-95 shadow-[0_4px_15px_rgba(122,0,60,0.25)] hover:shadow-[0_6px_20px_rgba(122,0,60,0.4)] transition-all duration-300 animate-btn-pulse animate-shimmer-sweep">
               Consult Now
@@ -574,12 +583,12 @@ export default function Header() {
         <div className="bg-[#f8fafc] border-y border-[#e5eaf0] py-2">
           <div className="w-full max-w-[1240px] mx-auto px-4 flex items-center justify-between gap-4">
             
-            {/* Minimalist Trust Badges (Left Side - Logos restored) */}
-            <div className="flex items-center gap-3 sm:gap-5 shrink-0 text-[11px] font-black tracking-wide text-[#2d4a6b]">
+            {/* Minimalist Trust Badges (Left Side - Logos with floating and interactive scale effects) */}
+            <div className="flex items-center gap-3 sm:gap-5 shrink-0 text-[11px] font-black tracking-wide text-[#2d4a6b] select-none">
               
-              {/* Google Brand Rating */}
-              <div className="flex items-center gap-1.5">
-                <svg className="w-3.5 h-3.5" viewBox="0 0 24 24">
+              {/* Google Brand Rating with floating animation & hover scale */}
+              <div className="flex items-center gap-1.5 animate-float-google hover:scale-110 hover:text-[#7a003c] cursor-pointer transition-all duration-300">
+                <svg className="w-3.5 h-3.5 drop-shadow-sm" viewBox="0 0 24 24">
                   <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
                   <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
                   <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22c-.23-.67-.35-1.37-.35-2.1z" />
@@ -590,9 +599,9 @@ export default function Header() {
               
               <div className="w-[1px] h-3 bg-[#d0dce8]" />
               
-              {/* Trustpilot Brand Rating */}
-              <div className="flex items-center gap-1.5">
-                <svg className="w-3.5 h-3.5 fill-[#00b67a]" viewBox="0 0 24 24">
+              {/* Trustpilot Brand Rating with delayed floating animation & hover scale */}
+              <div className="flex items-center gap-1.5 animate-float-trustpilot hover:scale-110 hover:text-[#00b67a] cursor-pointer transition-all duration-300">
+                <svg className="w-3.5 h-3.5 fill-[#00b67a] drop-shadow-sm" viewBox="0 0 24 24">
                   <path d="M23.95 9.176l-8.835-.615L11.97.104 8.847 8.56l-8.834.615 6.745 5.795-2.1 8.536 8.312-5.02 8.31 5.02-2.1-8.536 6.77-5.795z" />
                 </svg>
                 <span>Trustpilot <span className="text-[#00b67a]">4.9</span></span>
@@ -600,14 +609,14 @@ export default function Header() {
 
             </div>
 
-            {/* Review Testimonials Dynamic Slider with Larger Client Image & Stars */}
+            {/* Review Testimonials Dynamic Slider */}
             <div className="flex-1 overflow-hidden relative max-w-[240px] xs:max-w-[320px] sm:max-w-[480px] md:max-w-[650px] mx-auto">
               <div className="flex transition-transform duration-500 ease-out" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
                 {reviewsData.map((review, idx) => (
                   <div key={idx} className="w-full min-w-full flex-shrink-0 flex justify-center items-center">
                     <div className="flex items-center gap-3 text-left max-w-full">
                       
-                      {/* Bigger Avatar (w-10 h-10) */}
+                      {/* Avatar */}
                       <div className="relative w-10 h-10 rounded-full overflow-hidden bg-gradient-to-br from-[#7a003c] to-[#5a0028] text-white text-[11px] font-black grid place-items-center shrink-0 border-2 border-white shadow-md">
                         {review.image ? (
                           <Image 
@@ -626,7 +635,7 @@ export default function Header() {
                         <div className="flex items-center gap-2 flex-wrap">
                           <span className="text-[11px] font-black text-[#192c42] truncate max-w-[120px]">{review.name}</span>
                           
-                          {/* Stars dynamically based on review.stars */}
+                          {/* Stars */}
                           <div className="flex items-center gap-0.5 shrink-0">
                             {[...Array(5)].map((_, i) => (
                               <svg key={i} className={`w-3.5 h-3.5 ${i < review.stars ? "fill-[#f4c400]" : "fill-[#d0dce8]"}`} viewBox="0 0 24 24">
@@ -636,7 +645,7 @@ export default function Header() {
                           </div>
                         </div>
 
-                        {/* Title & "Read Full" trigger row */}
+                        {/* Title & "Read Full" */}
                         <div className="flex items-center gap-2 text-[11px] font-bold text-[#4a6480] mt-0.5">
                           <span className="truncate italic max-w-[150px] xs:max-w-[200px] sm:max-w-[280px]">
                             "{review.reviewTitle}"
@@ -658,7 +667,7 @@ export default function Header() {
               </div>
             </div>
 
-            {/* Inline Arrow Ticker Controls (Right Side) */}
+            {/* Inline Arrow Ticker Controls */}
             <div className="flex items-center gap-1 shrink-0">
               <button onClick={() => setCurrentIndex((prev) => (prev === 0 ? reviewsData.length - 1 : prev - 1))}
                 className="w-5 h-5 rounded bg-white border border-[#e5eaf0] hover:text-[#7a003c] flex items-center justify-center transition-colors shadow-sm" aria-label="Previous review">
