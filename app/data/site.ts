@@ -199,11 +199,11 @@ import bc7 from "@/public/images/ReviewImgs/bc7.png";
 
 export const reviewsData = [
   {
-    name: "Edith Oginga",
-    date: "4 weeks ago",
-    reviewTitle: "Excellent spouse visa support",
+    name: "James Khan",
+    date: "3 years ago",
+    reviewTitle: "Fantastic immigration service",
     reviewBody:
-      "I would highly recommend Ravindi from MSD Solicitors for anyone going through the spouse visa process. From the very beginning, she was professional, supportive, patient, and always willing to answer our questions and explain everything clearly.",
+      "Masaud Solicitors were fantastic! They were the first firm to respond to our partner's immigration case with excellent advice and the best cost. Zaheer Abbas, Javier Alvaro, and the entire team were kind, professional, and supportive throughout the process. Thanks to their help, we obtained our Civil Partnership, and my partner is now on track to resume his master's degree and apply for British citizenship in the future. We will definitely use their services again.",
     stars: 5,
     image: bc1,
   },
@@ -262,6 +262,8 @@ export const reviewsData = [
     image: bc7,
   },
 ];
+
+
 export const faqs = [
   {
     q: "Can I pay for British citizenship in instalments?",
