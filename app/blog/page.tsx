@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Reveal from "../components/ui/Reveal";
 import NewLeadSection from "../components/sections/NewLeadSection";
 import { blogPosts } from "../data/site";
@@ -36,8 +37,14 @@ export default function BlogPage() {
                   href={`/blog/${post.slug}`}
                   className="group block bg-white rounded-2xl border border-[#d0dce8] overflow-hidden hover:border-[#f4c400] hover:shadow-[0_20px_50px_rgba(244,196,0,0.15)] hover:-translate-y-1 transition-all duration-300"
                 >
-                  <div className="aspect-[16/9] bg-gradient-to-br from-[#7a003c] to-[#5a0028] flex items-center justify-center">
-                    <span className="text-6xl">🇬🇧</span>
+                  <div className="aspect-[16/9] relative overflow-hidden">
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
                   </div>
                   <div className="p-6">
                     <div className="flex items-center gap-2 mb-3">

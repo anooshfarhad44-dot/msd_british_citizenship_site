@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Reveal from "../../components/ui/Reveal";
 import NewLeadSection from "../../components/sections/NewLeadSection";
 import { blogPosts } from "../../data/site";
@@ -8,8 +9,9 @@ export function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = blogPosts.find((p) => p.slug === params.slug);
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = blogPosts.find((p) => p.slug === slug);
   if (!post) notFound();
 
   return (
@@ -41,8 +43,15 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       <section className="py-12 bg-white">
         <div className="w-full max-w-4xl mx-auto px-4">
           <Reveal>
-            <div className="aspect-[16/9] bg-gradient-to-br from-[#7a003c] to-[#5a0028] rounded-2xl flex items-center justify-center mb-8">
-              <span className="text-7xl">🇬🇧</span>
+            <div className="aspect-[16/9] relative overflow-hidden rounded-2xl mb-8">
+              <Image
+                src={post.image}
+                alt={post.title}
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 896px"
+                priority
+              />
             </div>
             <div
               className="prose prose-lg max-w-none text-[#4a6480]"

@@ -320,7 +320,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Everything you need to know about applying for British Citizenship in 2026, including eligibility routes, documents needed, and processing times.",
     date: "June 10, 2026",
     category: "British Citizenship",
-    image: "/images/heroImg.png",
+    image: "/images/blogImgs/blog-british-citizenship-2026.webp",
     content: `
       <div class="space-y-8">
         <div class="border-l-4 border-[#7a003c] pl-6 py-2 bg-gradient-to-r from-[#e6f0f8] to-transparent rounded-r-lg">
@@ -345,7 +345,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Learn how to transition from Indefinite Leave to Remain to full British citizenship, including timing, documents, and common pitfalls.",
     date: "May 25, 2026",
     category: "ILR & Citizenship",
-    image: "/images/heroImg.png",
+    image: "/images/blogImgs/blog-ilr-to-citizenship.webp",
     content: `
       <div class="space-y-8">
         <div class="border-l-4 border-[#f47a2a] pl-6 py-2 bg-gradient-to-r from-[#fff3e9] to-transparent rounded-r-lg">
@@ -361,7 +361,7 @@ export const blogPosts: BlogPost[] = [
     excerpt: "Tips, resources and everything you need to know to pass the Life in the UK Test required for British citizenship applications.",
     date: "May 10, 2026",
     category: "Test Guidance",
-    image: "/images/heroImg.png",
+    image: "/images/blogImgs/blog-life-in-uk-test.webp",
     content: `
       <div class="space-y-8">
         <div class="border-l-4 border-[#7a003c] pl-6 py-2 bg-gradient-to-r from-[#e6f0f8] to-transparent rounded-r-lg">
