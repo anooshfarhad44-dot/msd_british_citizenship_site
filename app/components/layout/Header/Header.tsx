@@ -321,7 +321,7 @@ import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { createPortal } from "react-dom";
-import { contact, navItems, reviewsData } from "../../../data/site";
+import { contact, navItems, reviewsData as fallbackReviews } from "../../../data/site";
 import WhatsAppIcon from "../../ui/WhatsAppIcon";
 import ReviewCard, { ReviewProps } from "./ReviewCard";
 
@@ -404,7 +404,9 @@ function ReviewModal({ review, onClose }: { review: ReviewProps; onClose: () => 
   );
 }
 
-export default function Header() {
+export default function Header({ initialReviews }: { initialReviews?: ReviewProps[] }) {
+  const reviews = initialReviews && initialReviews.length > 0 ? initialReviews : fallbackReviews;
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isPhoneDropdownOpen, setIsPhoneDropdownOpen] = useState(false);
   const [selectedOffice, setSelectedOffice] = useState(officeNumbers[0]);
@@ -428,10 +430,10 @@ export default function Header() {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % reviewsData.length);
+      setCurrentIndex((prev) => (prev + 1) % reviews.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [reviews.length]);
 
   return (
     <>
@@ -612,7 +614,7 @@ export default function Header() {
             {/* Review Testimonials Dynamic Slider */}
             <div className="flex-1 overflow-hidden relative max-w-[240px] xs:max-w-[320px] sm:max-w-[480px] md:max-w-[650px] mx-auto">
               <div className="flex transition-transform duration-500 ease-out" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-                {reviewsData.map((review, idx) => (
+                {reviews.map((review, idx) => (
                   <div key={idx} className="w-full min-w-full flex-shrink-0 flex justify-center items-center">
                     <div className="flex items-center gap-3 text-left max-w-full">
                       
@@ -669,11 +671,11 @@ export default function Header() {
 
             {/* Inline Arrow Ticker Controls */}
             <div className="flex items-center gap-1 shrink-0">
-              <button onClick={() => setCurrentIndex((prev) => (prev === 0 ? reviewsData.length - 1 : prev - 1))}
+              <button onClick={() => setCurrentIndex((prev) => (prev === 0 ? reviews.length - 1 : prev - 1))}
                 className="w-5 h-5 rounded bg-white border border-[#e5eaf0] hover:text-[#7a003c] flex items-center justify-center transition-colors shadow-sm" aria-label="Previous review">
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5"><polyline points="15 18 9 12 15 6" /></svg>
               </button>
-              <button onClick={() => setCurrentIndex((prev) => (prev + 1) % reviewsData.length)}
+              <button onClick={() => setCurrentIndex((prev) => (prev + 1) % reviews.length)}
                 className="w-5 h-5 rounded bg-white border border-[#e5eaf0] hover:text-[#7a003c] flex items-center justify-center transition-colors shadow-sm" aria-label="Next review">
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5"><polyline points="9 18 15 12 9 6" /></svg>
               </button>

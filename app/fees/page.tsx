@@ -1,11 +1,26 @@
 import Link from "next/link";
 import Reveal from "../components/ui/Reveal";
 import NewLeadSection from "../components/sections/NewLeadSection";
+import { getFees } from "../lib/api";
+import { solicitorFees as staticSolicitorFees, homeOfficeFees as staticHomeOfficeFees } from "../data/site";
 
-// Data arrays imported safely from your main mock / configuration data file
-import { solicitorFees, homeOfficeFees } from "../data/site"; 
+export const revalidate = 60;
 
-export default function FeesPage() {
+export default async function FeesPage() {
+  const fees = await getFees();
+
+  const solicitorFees = fees
+    ? fees
+        .filter((f) => f.category === "solicitor")
+        .map((f) => ({ label: f.label, price: f.price, isMain: f.is_main }))
+    : staticSolicitorFees;
+
+  const homeOfficeFees = fees
+    ? fees
+        .filter((f) => f.category === "home_office")
+        .map((f) => ({ label: f.label, price: f.price, note: f.note }))
+    : staticHomeOfficeFees;
+
   return (
     <div className="min-h-screen">
       {/* Hero */}

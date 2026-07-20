@@ -4,30 +4,35 @@ import { useState } from "react";
 import Link from "next/link";
 import Reveal from "../ui/Reveal";
 
-const faqs = [
+const fallbackFaqs = [
   {
-    q: "How long does a British Citizenship application take?",
-    a: "Typically around 6 months. We prepare decision-ready applications to help avoid delays.",
+    question: "How long does a British Citizenship application take?",
+    answer: "Typically around 6 months. We prepare decision-ready applications to help avoid delays.",
   },
   {
-    q: "Do I need to take the Life in the UK Test?",
-    a: "Most applicants do, unless you're under 18, over 65, or have certain medical conditions.",
+    question: "Do I need to take the Life in the UK Test?",
+    answer: "Most applicants do, unless you're under 18, over 65, or have certain medical conditions.",
   },
   {
-    q: "What's the difference between ILR and citizenship?",
-    a: "ILR gives permanent residence. British Citizenship gives full rights including a passport and voting.",
+    question: "What's the difference between ILR and citizenship?",
+    answer: "ILR gives permanent residence. British Citizenship gives full rights including a passport and voting.",
   },
   {
-    q: "Can I apply if I have a criminal record?",
-    a: "It depends on the nature and timing. Speak to a solicitor for tailored advice.",
+    question: "Can I apply if I have a criminal record?",
+    answer: "It depends on the nature and timing. Speak to a solicitor for tailored advice.",
   },
   {
-    q: "How much do your services cost?",
-    a: "Our fees vary by case. Contact us for a free consultation and clear, tailored quote.",
+    question: "How much do your services cost?",
+    answer: "Our fees vary by case. Contact us for a free consultation and clear, tailored quote.",
   },
 ];
 
-export default function NewFaqSection() {
+type Props = { initialFaqs?: { question: string; answer: string }[] };
+
+export default function NewFaqSection({ initialFaqs }: Props) {
+  const faqs =
+    initialFaqs && initialFaqs.length > 0 ? initialFaqs : fallbackFaqs;
+
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
@@ -66,7 +71,7 @@ export default function NewFaqSection() {
                     {index + 1}
                   </span>
                   <span className="flex-1 text-base font-black text-[#7a003c] leading-snug">
-                    {faq.q}
+                    {faq.question}
                   </span>
                   <span className={`text-2xl text-[#7a003c] transition-transform duration-300 ${openIndex === index ? "rotate-45" : ""}`}>
                     +
@@ -75,7 +80,7 @@ export default function NewFaqSection() {
                 {openIndex === index && (
                   <div className="px-6 pb-5 pt-2 border-t border-[#d0dce8]/60">
                     <p className="text-[#4a6480] text-sm leading-relaxed pl-14">
-                      {faq.a}
+                      {faq.answer}
                     </p>
                   </div>
                 )}

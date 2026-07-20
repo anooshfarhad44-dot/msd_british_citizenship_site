@@ -2,35 +2,39 @@ import React from "react";
 import Link from "next/link";
 import Reveal from "../ui/Reveal";
 
-const processSteps = [
+const defaultIcons = ["📞", "📋", "✍️", "📤", "🎉"];
+
+const fallbackSteps = [
   {
-    icon: "📞",
     title: "Free Consultation",
     description: "We discuss your situation and assess the best route for you.",
   },
   {
-    icon: "📋",
     title: "Case Assessment",
     description: "Our solicitors review your documents and eligibility.",
   },
   {
-    icon: "✍️",
     title: "Application Prep",
     description: "We prepare a decision-ready application for Home Office.",
   },
   {
-    icon: "📤",
     title: "Submit & Monitor",
     description: "We submit and keep you updated on your application.",
   },
   {
-    icon: "🎉",
     title: "Success!",
     description: "We guide you to your citizenship outcome!",
   },
 ];
 
-export default function NewProcessSection() {
+type Props = {
+  initialSteps?: { title: string; description: string }[];
+};
+
+export default function NewProcessSection({ initialSteps }: Props) {
+  const steps =
+    initialSteps && initialSteps.length > 0 ? initialSteps : fallbackSteps;
+
   return (
     <section className="py-16 bg-gradient-to-br from-[#fff5f8] to-white overflow-hidden">
       <div className="w-full max-w-6xl mx-auto px-4">
@@ -49,7 +53,7 @@ export default function NewProcessSection() {
 
           {/* Journey Roadmap */}
           <div className="flex flex-col md:flex-row items-center gap-3">
-            {processSteps.map((step, index) => (
+            {steps.map((step, index) => (
               <React.Fragment key={index}>
                 {/* Step Card */}
                 <div className="flex-1 z-10">
@@ -57,7 +61,7 @@ export default function NewProcessSection() {
                     {/* Step Number Badge */}
                     <div className="relative mb-4 inline-block">
                       <div className="w-16 h-16 bg-gradient-to-br from-[#f4c400] to-[#d4ab00] rounded-full flex items-center justify-center text-3xl shadow-[0_8px_25px_rgba(244,196,0,0.4)]">
-                        {step.icon}
+                        {defaultIcons[index] ?? "✅"}
                       </div>
                       <div className="absolute -top-1 -right-1 w-7 h-7 bg-gradient-to-br from-[#7a003c] to-[#5a0028] rounded-full flex items-center justify-center text-white font-black text-sm shadow-[0_4px_12px_rgba(122,0,60,0.3)]">
                         {index + 1}
@@ -74,7 +78,7 @@ export default function NewProcessSection() {
                 </div>
 
                 {/* Arrow Connector (except last one) */}
-                {index < processSteps.length - 1 && (
+                {index < steps.length - 1 && (
                   <div className="hidden md:flex items-center justify-center">
                     <svg width="70" height="45" viewBox="0 0 70 45" fill="none">
                       <circle cx="35" cy="22.5" r="5.5" fill="#f4c400" />

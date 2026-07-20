@@ -1,10 +1,22 @@
 import Link from "next/link";
-import Image from "next/image";
 import Reveal from "../components/ui/Reveal";
 import NewLeadSection from "../components/sections/NewLeadSection";
-import { blogPosts } from "../data/site";
+import { getBlogPosts, assetUrl } from "../lib/api";
+import { blogPosts as fallbackPosts } from "../data/site";
 
-export default function BlogPage() {
+export const revalidate = 60;
+
+export default async function BlogPage() {
+  const cmsPosts = await getBlogPosts();
+  const posts = cmsPosts ?? fallbackPosts.map((p) => ({
+    slug: p.slug,
+    title: p.title,
+    excerpt: p.excerpt,
+    date: p.date,
+    category: p.category,
+    image: p.image,
+  }));
+
   return (
     <div className="min-h-screen">
       {/* Hero */}
@@ -31,41 +43,43 @@ export default function BlogPage() {
         <div className="w-full max-w-6xl mx-auto px-4">
           <Reveal>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {blogPosts.map((post) => (
-                <Link
-                  key={post.slug}
-                  href={`/blog/${post.slug}`}
-                  className="group block bg-white rounded-2xl border border-[#d0dce8] overflow-hidden hover:border-[#f4c400] hover:shadow-[0_20px_50px_rgba(244,196,0,0.15)] hover:-translate-y-1 transition-all duration-300"
-                >
-                  <div className="aspect-[16/9] relative overflow-hidden">
-                    <Image
-                      src={post.image}
-                      alt={post.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
-                  </div>
-                  <div className="p-6">
-                    <div className="flex items-center gap-2 mb-3">
-                      <span className="text-[10px] font-black uppercase tracking-widest text-[#7a003c] bg-[#fff5f8] px-2.5 py-1 rounded-full">
-                        {post.category}
-                      </span>
-                      <span className="text-[10px] text-[#4a6480]">{post.date}</span>
+              {posts.map((post) => {
+                const imgSrc = assetUrl(post.image) ?? post.image;
+                return (
+                  <Link
+                    key={post.slug}
+                    href={`/blog/${post.slug}`}
+                    className="group block bg-white rounded-2xl border border-[#d0dce8] overflow-hidden hover:border-[#f4c400] hover:shadow-[0_20px_50px_rgba(244,196,0,0.15)] hover:-translate-y-1 transition-all duration-300"
+                  >
+                    <div className="aspect-[16/9] relative overflow-hidden">
+                      {/* Use plain <img> for CMS assets that go through the proxy */}
+                      <img
+                        src={imgSrc}
+                        alt={post.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
                     </div>
-                    <h3 className="font-extrabold text-[#7a003c] text-lg mb-2 group-hover:text-[#5a0028] transition-colors leading-snug">
-                      {post.title}
-                    </h3>
-                    <p className="text-[#4a6480] text-sm leading-relaxed line-clamp-3 mb-4">
-                      {post.excerpt}
-                    </p>
-                    <div className="flex items-center gap-1.5 text-[#7a003c] font-black text-sm group-hover:gap-2 transition-all">
-                      Read more
-                      <span>→</span>
+                    <div className="p-6">
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="text-[10px] font-black uppercase tracking-widest text-[#7a003c] bg-[#fff5f8] px-2.5 py-1 rounded-full">
+                          {post.category}
+                        </span>
+                        <span className="text-[10px] text-[#4a6480]">{post.date}</span>
+                      </div>
+                      <h3 className="font-extrabold text-[#7a003c] text-lg mb-2 group-hover:text-[#5a0028] transition-colors leading-snug">
+                        {post.title}
+                      </h3>
+                      <p className="text-[#4a6480] text-sm leading-relaxed line-clamp-3 mb-4">
+                        {post.excerpt}
+                      </p>
+                      <div className="flex items-center gap-1.5 text-[#7a003c] font-black text-sm group-hover:gap-2 transition-all">
+                        Read more
+                        <span>→</span>
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                );
+              })}
             </div>
           </Reveal>
         </div>

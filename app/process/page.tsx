@@ -2,9 +2,18 @@ import Link from "next/link";
 import Reveal from "../components/ui/Reveal";
 import NewLeadSection from "../components/sections/NewLeadSection";
 import OfficialResources from "../components/sections/OfficialResources";
-import { processSteps } from "../data/site";
+import { getProcessSteps } from "../lib/api";
+import { processSteps as staticSteps } from "../data/site";
 
-export default function ProcessPage() {
+export const revalidate = 60;
+
+export default async function ProcessPage() {
+  const cmsSteps = await getProcessSteps();
+
+  const processSteps = cmsSteps
+    ? cmsSteps.map((s) => ({ title: s.title, text: s.text }))
+    : staticSteps;
+
   return (
     <div className="min-h-screen">
       {/* Hero */}
