@@ -110,6 +110,7 @@ export default function CaseReviewForm() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     const newErrors: Record<string, string> = {};
@@ -169,7 +170,7 @@ export default function CaseReviewForm() {
       } catch {}
 
       const portalId = "8559434";
-      const formId = "6a1f6e88-09d1-48af-9b40-3163b27ffd6a";
+      const formId = "8b4c8237-d34a-486e-a23f-58d63217c2b3";
       const targetUrl = `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`;
 
       const formattedConcerns = formData.concerns.map((c, i) => `${i + 1}. ${c}`).join("; ");
@@ -181,10 +182,10 @@ export default function CaseReviewForm() {
           { name: "email", value: formData.email },
           { name: "phone", value: formData.phone },
           { name: "country", value: formData.countryResidence },
-          { name: "address", value: formData.nationality },
-          { name: "what_services_do_you_need", value: formData.citizenshipService },
-          { name: "what_type_of_visa_service_are_you_interested_in", value: formattedConcerns },
-          { name: "company", value: formData.tailoredAdvice },
+          { name: "state", value: formData.nationality },
+          { name: "citizenship_service_you_need", value: formData.citizenshipService },
+          { name: "main_concerns__select_all_that_apply", value: formattedConcerns },
+          { name: "want_tailored_advice", value: formData.tailoredAdvice },
         ],
         context: {
           ipAddress: userIp,
@@ -203,6 +204,7 @@ export default function CaseReviewForm() {
           toast.success("Case review submitted successfully! Our team will be in touch shortly.");
           setFormData(initialFormState);
           setTouched({});
+          setSubmitted(true);
         } else {
           toast.error("Submission failed. Please try again or call us directly.");
         }
@@ -216,155 +218,178 @@ export default function CaseReviewForm() {
 
   return (
     <div className="bg-white p-6 md:p-10 rounded-2xl border border-slate-100 shadow-[0_22px_60px_rgba(12,35,64,0.06)] relative before:absolute before:top-0 before:left-0 before:w-full before:h-2 before:bg-gradient-to-r before:from-[#7a003c] before:to-[#f4c400] before:rounded-t-2xl">
-      <h2 className="text-2xl font-black text-[#7a003c] mb-2 tracking-tight">
-        Request a Free Case Review
-      </h2>
-      <p className="text-xs font-semibold text-gray-400 mb-6">
-        Fill out the secure form below for immediate citizenship support.
-      </p>
-
-      <form onSubmit={handleSubmit} className="space-y-5">
-        {/* Name Row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="space-y-1.5">
-            <label className="block text-xs font-bold text-[#7a003c]">First Name <span className="text-red-500">*</span></label>
-            <input
-              type="text" placeholder="First Name" required disabled={isSubmitting}
-              value={formData.firstName} onKeyDown={handleNameKeyDown} onBlur={() => handleBlur("firstName")}
-              onChange={(e) => handleNameChange("firstName", e.target.value)}
-              className={`w-full h-[52px] px-4 rounded-xl border bg-slate-50 text-[#7a003c] placeholder-gray-400 placeholder:text-xs font-medium focus:outline-none focus:bg-white focus:ring-4 transition-all text-sm ${touched.firstName && errors.firstName ? "border-red-500 focus:border-red-500 focus:ring-red-500/5" : "border-slate-200 focus:border-[#7a003c] focus:ring-[#7a003c]/5"}`}
-            />
-            {touched.firstName && errors.firstName && <p className="text-[10px] font-semibold text-red-500 m-0">{errors.firstName}</p>}
+      {submitted ? (
+        <div className="flex flex-col items-center justify-center text-center py-10">
+          <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center mb-5">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#16a34a" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
           </div>
-          <div className="space-y-1.5">
-            <label className="block text-xs font-bold text-[#7a003c]">Last Name <span className="text-red-500">*</span></label>
-            <input
-              type="text" placeholder="Last Name" required disabled={isSubmitting}
-              value={formData.lastName} onKeyDown={handleNameKeyDown} onBlur={() => handleBlur("lastName")}
-              onChange={(e) => handleNameChange("lastName", e.target.value)}
-              className={`w-full h-[52px] px-4 rounded-xl border bg-slate-50 text-[#7a003c] placeholder-gray-400 placeholder:text-xs font-medium focus:outline-none focus:bg-white focus:ring-4 transition-all text-sm ${touched.lastName && errors.lastName ? "border-red-500 focus:border-red-500 focus:ring-red-500/5" : "border-slate-200 focus:border-[#7a003c] focus:ring-[#7a003c]/5"}`}
-            />
-            {touched.lastName && errors.lastName && <p className="text-[10px] font-semibold text-red-500 m-0">{errors.lastName}</p>}
-          </div>
-        </div>
-
-        {/* Contact Row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="space-y-1.5">
-            <label className="block text-xs font-bold text-[#7a003c]">Email Address <span className="text-red-500">*</span></label>
-            <input
-              type="email" placeholder="Email Address" required disabled={isSubmitting}
-              value={formData.email} onBlur={() => handleBlur("email")}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className={`w-full h-[52px] px-4 rounded-xl border bg-slate-50 text-[#7a003c] placeholder-gray-400 placeholder:text-xs font-medium focus:outline-none focus:bg-white focus:ring-4 transition-all text-sm ${touched.email && errors.email ? "border-red-500 focus:border-red-500 focus:ring-red-500/5" : "border-slate-200 focus:border-[#7a003c] focus:ring-[#7a003c]/5"}`}
-            />
-            {touched.email && errors.email && <p className="text-[10px] font-semibold text-red-500 m-0">{errors.email}</p>}
-          </div>
-          <div className="space-y-1.5">
-            <label className="block text-xs font-bold text-[#7a003c]">Phone Number <span className="text-red-500">*</span></label>
-            <input
-              type="tel" placeholder="Phone Number" required disabled={isSubmitting}
-              value={formData.phone} onBlur={() => handleBlur("phone")}
-              onChange={(e) => handlePhoneChange(e.target.value)}
-              className={`w-full h-[52px] px-4 rounded-xl border bg-slate-50 text-[#7a003c] placeholder-gray-400 placeholder:text-xs font-medium focus:outline-none focus:bg-white focus:ring-4 transition-all text-sm ${touched.phone && errors.phone ? "border-red-500 focus:border-red-500 focus:ring-red-500/5" : "border-slate-200 focus:border-[#7a003c] focus:ring-[#7a003c]/5"}`}
-            />
-            {touched.phone && errors.phone && <p className="text-[10px] font-semibold text-red-500 m-0">{errors.phone}</p>}
-          </div>
-        </div>
-
-        {/* Dropdowns Row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div className="space-y-1.5">
-            <label className="block text-xs font-bold text-[#7a003c]">Country of Residence <span className="text-red-500">*</span></label>
-            <SearchableDropdown options={countries} placeholder="Country of Residence" selectedValue={formData.countryResidence}
-              hasError={!!(touched.countryResidence && errors.countryResidence)}
-              onSelect={(val) => { setFormData({ ...formData, countryResidence: val }); handleBlur("countryResidence"); }}
-            />
-            {touched.countryResidence && errors.countryResidence && <p className="text-[10px] font-semibold text-red-500 m-0">{errors.countryResidence}</p>}
-          </div>
-          <div className="space-y-1.5">
-            <label className="block text-xs font-bold text-[#7a003c]">Nationality <span className="text-red-500">*</span></label>
-            <SearchableDropdown options={countries} placeholder="Your Nationality" selectedValue={formData.nationality}
-              hasError={!!(touched.nationality && errors.nationality)}
-              onSelect={(val) => { setFormData({ ...formData, nationality: val }); handleBlur("nationality"); }}
-            />
-            {touched.nationality && errors.nationality && <p className="text-[10px] font-semibold text-red-500 m-0">{errors.nationality}</p>}
-          </div>
-        </div>
-
-        {/* Service Dropdown */}
-        <div className="space-y-1.5">
-          <label className="block text-xs font-bold text-[#7a003c]">Citizenship Service You Need <span className="text-red-500">*</span></label>
-          <SearchableDropdown options={citizenshipServices} placeholder="Select Citizenship Service" selectedValue={formData.citizenshipService}
-            hasError={!!(touched.citizenshipService && errors.citizenshipService)}
-            onSelect={(val) => { setFormData({ ...formData, citizenshipService: val }); handleBlur("citizenshipService"); }}
-          />
-          {touched.citizenshipService && errors.citizenshipService && <p className="text-[10px] font-semibold text-red-500 m-0">{errors.citizenshipService}</p>}
-        </div>
-
-        {/* Concerns */}
-        <div className={`bg-slate-50 p-4 rounded-xl border transition-all ${touched.concerns && errors.concerns ? "border-red-500" : "border-slate-200"}`}>
-          <label className="block text-xs font-bold text-[#7a003c] mb-3 uppercase tracking-wide">
-            Main Concerns – select all that apply <span className="text-red-500">*</span>
-          </label>
-          <div className="space-y-2.5 max-h-[160px] overflow-y-auto pr-1">
-            {["Unsure which citizenship route applies to me", "Application refused or delayed", "Urgent deadline", "Complex case or unique circumstances", "Need help with Life in the UK Test preparation", "Other"].map((concern) => (
-              <label key={concern} className="flex items-start gap-3 text-xs font-bold text-[#192c42] cursor-pointer select-none group">
-                <input type="checkbox" disabled={isSubmitting} checked={formData.concerns.includes(concern)}
-                  onChange={() => handleCheckboxChange(concern)}
-                  className="mt-0.5 w-4 h-4 rounded border-gray-300 text-[#7a003c] focus:ring-[#7a003c] accent-[#7a003c] cursor-pointer"
-                />
-                <span className="group-hover:text-[#7a003c] transition-colors">{concern}</span>
-              </label>
-            ))}
-          </div>
-          {touched.concerns && errors.concerns && <p className="text-[10px] font-semibold text-red-500 mt-2 m-0">{errors.concerns}</p>}
-        </div>
-
-        {/* Tailored Advice Radio */}
-        <div className={`bg-slate-50 p-4 rounded-xl border flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition-all ${touched.tailoredAdvice && errors.tailoredAdvice ? "border-red-500" : "border-slate-200"}`}>
-          <label className="text-xs font-bold text-[#7a003c] uppercase tracking-wide">
-            Want tailored advice? <span className="text-red-500">*</span>
-          </label>
-          <div className="flex gap-6">
-            {["Yes", "No"].map((option) => (
-              <label key={option} className="flex items-center gap-2 text-xs font-bold text-[#192c42] cursor-pointer group">
-                <input type="radio" name="tailoredAdvice" required disabled={isSubmitting} value={option}
-                  checked={formData.tailoredAdvice === option}
-                  onChange={(e) => { setFormData({ ...formData, tailoredAdvice: e.target.value }); handleBlur("tailoredAdvice"); }}
-                  className="w-4 h-4 text-[#7a003c] focus:ring-[#7a003c] accent-[#7a003c] cursor-pointer"
-                />
-                <span className="group-hover:text-[#7a003c] transition-colors">{option}</span>
-              </label>
-            ))}
-          </div>
-          {touched.tailoredAdvice && errors.tailoredAdvice && <p className="text-[10px] font-semibold text-red-500 m-0">{errors.tailoredAdvice}</p>}
-        </div>
-
-        {/* Consent */}
-        <div className="pt-1">
-          <label className="flex items-start gap-3 text-[11px] font-semibold text-gray-400 cursor-pointer select-none">
-            <input type="checkbox" required disabled={isSubmitting} checked={formData.consent}
-              onChange={(e) => { setFormData({ ...formData, consent: e.target.checked }); handleBlur("consent"); }}
-              className={`mt-0.5 w-4 h-4 shrink-0 rounded border-gray-300 text-[#7a003c] focus:ring-[#7a003c] accent-[#7a003c] cursor-pointer ${touched.consent && errors.consent ? "outline outline-2 outline-red-500/50 rounded-sm" : ""}`}
-            />
-            <span className="leading-tight">
-              I consent to my data being used by MSD Solicitors to process my enquiry and keep me informed. <span className="text-red-500">*</span>
-            </span>
-          </label>
-          {touched.consent && errors.consent && <p className="text-[10px] font-semibold text-red-500 mt-1 m-0">{errors.consent}</p>}
-        </div>
-
-        {/* Submit */}
-        <div className="pt-2">
+          <h3 className="text-xl font-black text-[#0c2340] mb-2">Request received successfully!</h3>
+          <p className="text-sm text-[#4a6480] leading-relaxed max-w-sm mb-6">
+            Thank you for reaching out. One of our citizenship solicitors will contact you shortly to discuss your case.
+          </p>
           <button
-            type="submit" disabled={isSubmitting}
-            className="w-full h-[54px] flex items-center justify-center bg-[#7a003c] text-white font-black text-sm rounded-xl shadow-[0_10px_25px_-5px_rgba(122,0,60,0.3)] hover:bg-[#5a0028] hover:shadow-[0_12px_30px_-5px_rgba(122,0,60,0.4)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 disabled:opacity-50 disabled:pointer-events-none"
+            type="button"
+            onClick={() => setSubmitted(false)}
+            className="inline-flex items-center justify-center min-h-[44px] px-6 py-2.5 rounded-xl bg-[#7a003c] text-white text-xs font-black uppercase tracking-wider hover:bg-[#5a0028] transition-colors"
           >
-            {isSubmitting ? "Submitting..." : "Submit Case Review Request"}
+            Submit another request
           </button>
         </div>
-      </form>
+      ) : (
+        <>
+          <h2 className="text-2xl font-black text-[#7a003c] mb-2 tracking-tight">
+            Request a Free Case Review
+          </h2>
+          <p className="text-xs font-semibold text-gray-400 mb-6">
+            Fill out the secure form below for immediate citizenship support.
+          </p>
+
+          <form onSubmit={handleSubmit} className="space-y-5">
+            {/* Name Row */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="space-y-1.5">
+                <label className="block text-xs font-bold text-[#7a003c]">First Name <span className="text-red-500">*</span></label>
+                <input
+                  type="text" placeholder="First Name" required disabled={isSubmitting}
+                  value={formData.firstName} onKeyDown={handleNameKeyDown} onBlur={() => handleBlur("firstName")}
+                  onChange={(e) => handleNameChange("firstName", e.target.value)}
+                  className={`w-full h-[52px] px-4 rounded-xl border bg-slate-50 text-[#7a003c] placeholder-gray-400 placeholder:text-xs font-medium focus:outline-none focus:bg-white focus:ring-4 transition-all text-sm ${touched.firstName && errors.firstName ? "border-red-500 focus:border-red-500 focus:ring-red-500/5" : "border-slate-200 focus:border-[#7a003c] focus:ring-[#7a003c]/5"}`}
+                />
+                {touched.firstName && errors.firstName && <p className="text-[10px] font-semibold text-red-500 m-0">{errors.firstName}</p>}
+              </div>
+              <div className="space-y-1.5">
+                <label className="block text-xs font-bold text-[#7a003c]">Last Name <span className="text-red-500">*</span></label>
+                <input
+                  type="text" placeholder="Last Name" required disabled={isSubmitting}
+                  value={formData.lastName} onKeyDown={handleNameKeyDown} onBlur={() => handleBlur("lastName")}
+                  onChange={(e) => handleNameChange("lastName", e.target.value)}
+                  className={`w-full h-[52px] px-4 rounded-xl border bg-slate-50 text-[#7a003c] placeholder-gray-400 placeholder:text-xs font-medium focus:outline-none focus:bg-white focus:ring-4 transition-all text-sm ${touched.lastName && errors.lastName ? "border-red-500 focus:border-red-500 focus:ring-red-500/5" : "border-slate-200 focus:border-[#7a003c] focus:ring-[#7a003c]/5"}`}
+                />
+                {touched.lastName && errors.lastName && <p className="text-[10px] font-semibold text-red-500 m-0">{errors.lastName}</p>}
+              </div>
+            </div>
+
+            {/* Contact Row */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="space-y-1.5">
+                <label className="block text-xs font-bold text-[#7a003c]">Email Address <span className="text-red-500">*</span></label>
+                <input
+                  type="email" placeholder="Email Address" required disabled={isSubmitting}
+                  value={formData.email} onBlur={() => handleBlur("email")}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className={`w-full h-[52px] px-4 rounded-xl border bg-slate-50 text-[#7a003c] placeholder-gray-400 placeholder:text-xs font-medium focus:outline-none focus:bg-white focus:ring-4 transition-all text-sm ${touched.email && errors.email ? "border-red-500 focus:border-red-500 focus:ring-red-500/5" : "border-slate-200 focus:border-[#7a003c] focus:ring-[#7a003c]/5"}`}
+                />
+                {touched.email && errors.email && <p className="text-[10px] font-semibold text-red-500 m-0">{errors.email}</p>}
+              </div>
+              <div className="space-y-1.5">
+                <label className="block text-xs font-bold text-[#7a003c]">Phone Number <span className="text-red-500">*</span></label>
+                <input
+                  type="tel" placeholder="Phone Number" required disabled={isSubmitting}
+                  value={formData.phone} onBlur={() => handleBlur("phone")}
+                  onChange={(e) => handlePhoneChange(e.target.value)}
+                  className={`w-full h-[52px] px-4 rounded-xl border bg-slate-50 text-[#7a003c] placeholder-gray-400 placeholder:text-xs font-medium focus:outline-none focus:bg-white focus:ring-4 transition-all text-sm ${touched.phone && errors.phone ? "border-red-500 focus:border-red-500 focus:ring-red-500/5" : "border-slate-200 focus:border-[#7a003c] focus:ring-[#7a003c]/5"}`}
+                />
+                {touched.phone && errors.phone && <p className="text-[10px] font-semibold text-red-500 m-0">{errors.phone}</p>}
+              </div>
+            </div>
+
+            {/* Dropdowns Row */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="space-y-1.5">
+                <label className="block text-xs font-bold text-[#7a003c]">Country of Residence <span className="text-red-500">*</span></label>
+                <SearchableDropdown options={countries} placeholder="Country of Residence" selectedValue={formData.countryResidence}
+                  hasError={!!(touched.countryResidence && errors.countryResidence)}
+                  onSelect={(val) => { setFormData({ ...formData, countryResidence: val }); handleBlur("countryResidence"); }}
+                />
+                {touched.countryResidence && errors.countryResidence && <p className="text-[10px] font-semibold text-red-500 m-0">{errors.countryResidence}</p>}
+              </div>
+              <div className="space-y-1.5">
+                <label className="block text-xs font-bold text-[#7a003c]">Nationality <span className="text-red-500">*</span></label>
+                <SearchableDropdown options={countries} placeholder="Your Nationality" selectedValue={formData.nationality}
+                  hasError={!!(touched.nationality && errors.nationality)}
+                  onSelect={(val) => { setFormData({ ...formData, nationality: val }); handleBlur("nationality"); }}
+                />
+                {touched.nationality && errors.nationality && <p className="text-[10px] font-semibold text-red-500 m-0">{errors.nationality}</p>}
+              </div>
+            </div>
+
+            {/* Service Dropdown */}
+            <div className="space-y-1.5">
+              <label className="block text-xs font-bold text-[#7a003c]">Citizenship Service You Need <span className="text-red-500">*</span></label>
+              <SearchableDropdown options={citizenshipServices} placeholder="Select Citizenship Service" selectedValue={formData.citizenshipService}
+                hasError={!!(touched.citizenshipService && errors.citizenshipService)}
+                onSelect={(val) => { setFormData({ ...formData, citizenshipService: val }); handleBlur("citizenshipService"); }}
+              />
+              {touched.citizenshipService && errors.citizenshipService && <p className="text-[10px] font-semibold text-red-500 m-0">{errors.citizenshipService}</p>}
+            </div>
+
+            {/* Concerns */}
+            <div className={`bg-slate-50 p-4 rounded-xl border transition-all ${touched.concerns && errors.concerns ? "border-red-500" : "border-slate-200"}`}>
+              <label className="block text-xs font-bold text-[#7a003c] mb-3 uppercase tracking-wide">
+                Main Concerns – select all that apply <span className="text-red-500">*</span>
+              </label>
+              <div className="space-y-2.5 max-h-[160px] overflow-y-auto pr-1">
+                {["Unsure which citizenship route applies to me", "Application refused or delayed", "Urgent deadline", "Complex case or unique circumstances", "Need help with Life in the UK Test preparation", "Other"].map((concern) => (
+                  <label key={concern} className="flex items-start gap-3 text-xs font-bold text-[#192c42] cursor-pointer select-none group">
+                    <input type="checkbox" disabled={isSubmitting} checked={formData.concerns.includes(concern)}
+                      onChange={() => handleCheckboxChange(concern)}
+                      className="mt-0.5 w-4 h-4 rounded border-gray-300 text-[#7a003c] focus:ring-[#7a003c] accent-[#7a003c] cursor-pointer"
+                    />
+                    <span className="group-hover:text-[#7a003c] transition-colors">{concern}</span>
+                  </label>
+                ))}
+              </div>
+              {touched.concerns && errors.concerns && <p className="text-[10px] font-semibold text-red-500 mt-2 m-0">{errors.concerns}</p>}
+            </div>
+
+            {/* Tailored Advice Radio */}
+            <div className={`bg-slate-50 p-4 rounded-xl border flex flex-col sm:flex-row sm:items-center justify-between gap-3 transition-all ${touched.tailoredAdvice && errors.tailoredAdvice ? "border-red-500" : "border-slate-200"}`}>
+              <label className="text-xs font-bold text-[#7a003c] uppercase tracking-wide">
+                Want tailored advice? <span className="text-red-500">*</span>
+              </label>
+              <div className="flex gap-6">
+                {["Yes", "No"].map((option) => (
+                  <label key={option} className="flex items-center gap-2 text-xs font-bold text-[#192c42] cursor-pointer group">
+                    <input type="radio" name="tailoredAdvice" required disabled={isSubmitting} value={option}
+                      checked={formData.tailoredAdvice === option}
+                      onChange={(e) => { setFormData({ ...formData, tailoredAdvice: e.target.value }); handleBlur("tailoredAdvice"); }}
+                      className="w-4 h-4 text-[#7a003c] focus:ring-[#7a003c] accent-[#7a003c] cursor-pointer"
+                    />
+                    <span className="group-hover:text-[#7a003c] transition-colors">{option}</span>
+                  </label>
+                ))}
+              </div>
+              {touched.tailoredAdvice && errors.tailoredAdvice && <p className="text-[10px] font-semibold text-red-500 m-0">{errors.tailoredAdvice}</p>}
+            </div>
+
+            {/* Consent */}
+            <div className="pt-1">
+              <label className="flex items-start gap-3 text-[11px] font-semibold text-gray-400 cursor-pointer select-none">
+                <input type="checkbox" required disabled={isSubmitting} checked={formData.consent}
+                  onChange={(e) => { setFormData({ ...formData, consent: e.target.checked }); handleBlur("consent"); }}
+                  className={`mt-0.5 w-4 h-4 shrink-0 rounded border-gray-300 text-[#7a003c] focus:ring-[#7a003c] accent-[#7a003c] cursor-pointer ${touched.consent && errors.consent ? "outline outline-2 outline-red-500/50 rounded-sm" : ""}`}
+                />
+                <span className="leading-tight">
+                  I consent to my data being used by MSD Solicitors to process my enquiry and keep me informed. <span className="text-red-500">*</span>
+                </span>
+              </label>
+              {touched.consent && errors.consent && <p className="text-[10px] font-semibold text-red-500 mt-1 m-0">{errors.consent}</p>}
+            </div>
+
+            {/* Submit */}
+            <div className="pt-2">
+              <button
+                type="submit" disabled={isSubmitting}
+                className="w-full h-[54px] flex items-center justify-center bg-[#7a003c] text-white font-black text-sm rounded-xl shadow-[0_10px_25px_-5px_rgba(122,0,60,0.3)] hover:bg-[#5a0028] hover:shadow-[0_12px_30px_-5px_rgba(122,0,60,0.4)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 disabled:opacity-50 disabled:pointer-events-none"
+              >
+                {isSubmitting ? "Submitting..." : "Submit Case Review Request"}
+              </button>
+            </div>
+          </form>
+        </>
+      )}
     </div>
   );
 }

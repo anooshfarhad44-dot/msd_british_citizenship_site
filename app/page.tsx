@@ -1,11 +1,11 @@
 import HomeHero from "./components/sections/HomeHero";
+import NewLeadSection from "./components/sections/NewLeadSection";
 import FinalCta from "./components/sections/FinalCta";
 import NewTrustSection from "./components/sections/NewTrustSection";
 import NewEligibilitySection from "./components/sections/NewEligibilitySection";
 import NewProcessSection from "./components/sections/NewProcessSection";
 import NewTestimonialsSection from "./components/sections/NewTestimonialsSection";
 import NewFaqSection from "./components/sections/NewFaqSection";
-import NewLeadSection from "./components/sections/NewLeadSection";
 import OfficialResources from "./components/sections/OfficialResources";
 import { getReviews, getFaqs, getProcessSteps, assetUrl } from "./lib/api";
 import type { CmsReview } from "./components/sections/NewTestimonialsSection";

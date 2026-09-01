@@ -10,9 +10,9 @@ interface Props {
 }
 
 export default function NewLeadSection({ context = "" }: Props) {
-  const [fields, setFields] = useState({ name: "", phone: "", email: "", country: "" });
-  const [errors, setErrors] = useState({ name: "", phone: "", email: "", country: "" });
-  const [touched, setTouched] = useState({ name: false, phone: false, email: false, country: false });
+  const [fields, setFields] = useState({ firstName: "", lastName: "", phone: "", email: "", country: "" });
+  const [errors, setErrors] = useState({ firstName: "", lastName: "", phone: "", email: "", country: "" });
+  const [touched, setTouched] = useState({ firstName: false, lastName: false, phone: false, email: false, country: false });
   const [loading, setLoading] = useState(false);
   const [done, setDone] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -63,20 +63,17 @@ export default function NewLeadSection({ context = "" }: Props) {
     if (hasErr) return;
 
     setLoading(true);
-    const [firstName, ...rest] = fields.name.trim().split(" ");
-    const lastName = rest.join(" ") || "-";
-
     try {
       const res = await fetch(
-        "https://api.hsforms.com/submissions/v3/integration/submit/8559434/cadbe688-4a2d-459d-926f-1921add1690a",
+        "https://api.hsforms.com/submissions/v3/integration/submit/8559434/0230de4b-87dd-4c04-9eee-c93090303f2b",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             submittedAt: Date.now(),
             fields: [
-              { name: "firstname", value: firstName },
-              { name: "lastname", value: lastName },
+              { name: "firstname", value: fields.firstName.trim() },
+              { name: "lastname", value: fields.lastName.trim() },
               { name: "email", value: fields.email.trim() },
               { name: "mobilephone", value: fields.phone.trim() },
               { name: "country", value: fields.country },
@@ -178,25 +175,45 @@ export default function NewLeadSection({ context = "" }: Props) {
               </div>
 
               <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-[10px] font-black uppercase tracking-wider text-[#7a003c] mb-1.5">
-                      Full Name <span className="text-rose-500">*</span>
+                      First Name <span className="text-rose-500">*</span>
                     </label>
                     <input
                       type="text"
-                      placeholder="John Smith"
-                      value={fields.name}
-                      onChange={(e) => handleChange("name", e.target.value)}
-                      onBlur={() => handleBlur("name")}
+                      placeholder="John"
+                      value={fields.firstName}
+                      onChange={(e) => handleChange("firstName", e.target.value)}
+                      onBlur={() => handleBlur("firstName")}
                       disabled={loading}
-                      className={inputCls("name")}
+                      className={inputCls("firstName")}
                     />
-                    {touched.name && errors.name && (
-                      <p className="text-rose-500 text-[10px] font-semibold mt-1.5">⚠ {errors.name}</p>
+                    {touched.firstName && errors.firstName && (
+                      <p className="text-rose-500 text-[10px] font-semibold mt-1.5">⚠ {errors.firstName}</p>
                     )}
                   </div>
 
+                  <div>
+                    <label className="block text-[10px] font-black uppercase tracking-wider text-[#7a003c] mb-1.5">
+                      Last Name <span className="text-rose-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Smith"
+                      value={fields.lastName}
+                      onChange={(e) => handleChange("lastName", e.target.value)}
+                      onBlur={() => handleBlur("lastName")}
+                      disabled={loading}
+                      className={inputCls("lastName")}
+                    />
+                    {touched.lastName && errors.lastName && (
+                      <p className="text-rose-500 text-[10px] font-semibold mt-1.5">⚠ {errors.lastName}</p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-[10px] font-black uppercase tracking-wider text-[#7a003c] mb-1.5">
                       Phone Number <span className="text-rose-500">*</span>
@@ -214,9 +231,7 @@ export default function NewLeadSection({ context = "" }: Props) {
                       <p className="text-rose-500 text-[10px] font-semibold mt-1.5">⚠ {errors.phone}</p>
                     )}
                   </div>
-                </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-[10px] font-black uppercase tracking-wider text-[#7a003c] mb-1.5">
                       Email Address <span className="text-rose-500">*</span>
@@ -234,66 +249,66 @@ export default function NewLeadSection({ context = "" }: Props) {
                       <p className="text-rose-500 text-[10px] font-semibold mt-1.5">⚠ {errors.email}</p>
                     )}
                   </div>
+                </div>
 
-                  <div className="relative" ref={dropdownRef}>
-                    <label className="block text-[10px] font-black uppercase tracking-wider text-[#7a003c] mb-1.5">
-                      Your Country <span className="text-rose-500">*</span>
-                    </label>
-                    <div
-                      onClick={() => !loading && setIsOpen(!isOpen)}
-                      className={`${inputCls("country")} flex items-center justify-between cursor-pointer`}
+                <div className="relative" ref={dropdownRef}>
+                  <label className="block text-[10px] font-black uppercase tracking-wider text-[#7a003c] mb-1.5">
+                    Your Country <span className="text-rose-500">*</span>
+                  </label>
+                  <div
+                    onClick={() => !loading && setIsOpen(!isOpen)}
+                    className={`${inputCls("country")} flex items-center justify-between cursor-pointer`}
+                  >
+                    <span className={fields.country ? "text-[#7a003c]" : "text-[#9aafbf]"}>
+                      {fields.country || "Select your country"}
+                    </span>
+                    <svg
+                      className={`w-4 h-4 text-[#4a6480] transition-transform ${isOpen ? "rotate-180" : ""}`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
                     >
-                      <span className={fields.country ? "text-[#7a003c]" : "text-[#9aafbf]"}>
-                        {fields.country || "Select your country"}
-                      </span>
-                      <svg
-                        className={`w-4 h-4 text-[#4a6480] transition-transform ${isOpen ? "rotate-180" : ""}`}
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                      </svg>
-                    </div>
-                    {touched.country && errors.country && (
-                      <p className="text-rose-500 text-[10px] font-semibold mt-1.5">⚠ {errors.country}</p>
-                    )}
-
-                    {isOpen && (
-                      <div className="absolute z-50 w-full mt-2 bg-white rounded-xl border border-[#d0dce8] shadow-[0_15px_40px_rgba(122,0,60,0.15)] flex flex-col max-h-52 overflow-hidden">
-                        <div className="p-2.5 border-b border-slate-100 bg-slate-50">
-                          <input
-                            type="text"
-                            placeholder="Search countries..."
-                            value={search}
-                            onChange={(e) => setSearch(e.target.value)}
-                            autoFocus
-                            className="w-full px-3 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:border-[#7a003c] bg-white"
-                          />
-                        </div>
-                        <ul className="overflow-y-auto flex-1 max-h-36 divide-y divide-slate-50">
-                          {filtered.length > 0 ? (
-                            filtered.map((c) => (
-                              <li
-                                key={c}
-                                onClick={() => {
-                                  setFields((p) => ({ ...p, country: c }));
-                                  setErrors((p) => ({ ...p, country: "" }));
-                                  setIsOpen(false);
-                                  setSearch("");
-                                }}
-                                className="px-4 py-2.5 text-sm text-slate-700 hover:bg-[#7a003c]/5 hover:text-[#7a003c] cursor-pointer font-medium transition-colors"
-                              >
-                                {c}
-                              </li>
-                            ))
-                          ) : (
-                            <li className="px-4 py-3 text-xs text-slate-400 text-center">No countries found</li>
-                          )}
-                        </ul>
-                      </div>
-                    )}
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    </svg>
                   </div>
+                  {touched.country && errors.country && (
+                    <p className="text-rose-500 text-[10px] font-semibold mt-1.5">⚠ {errors.country}</p>
+                  )}
+
+                  {isOpen && (
+                    <div className="absolute z-50 w-full mt-2 bg-white rounded-xl border border-[#d0dce8] shadow-[0_15px_40px_rgba(122,0,60,0.15)] flex flex-col max-h-52 overflow-hidden">
+                      <div className="p-2.5 border-b border-slate-100 bg-slate-50">
+                        <input
+                          type="text"
+                          placeholder="Search countries..."
+                          value={search}
+                          onChange={(e) => setSearch(e.target.value)}
+                          autoFocus
+                          className="w-full px-3 py-2 text-sm border border-slate-200 rounded-lg focus:outline-none focus:border-[#7a003c] bg-white"
+                        />
+                      </div>
+                      <ul className="overflow-y-auto flex-1 max-h-36 divide-y divide-slate-50">
+                        {filtered.length > 0 ? (
+                          filtered.map((c) => (
+                            <li
+                              key={c}
+                              onClick={() => {
+                                setFields((p) => ({ ...p, country: c }));
+                                setErrors((p) => ({ ...p, country: "" }));
+                                setIsOpen(false);
+                                setSearch("");
+                              }}
+                              className="px-4 py-2.5 text-sm text-slate-700 hover:bg-[#7a003c]/5 hover:text-[#7a003c] cursor-pointer font-medium transition-colors"
+                            >
+                              {c}
+                            </li>
+                          ))
+                        ) : (
+                          <li className="px-4 py-3 text-xs text-slate-400 text-center">No countries found</li>
+                        )}
+                      </ul>
+                    </div>
+                  )}
                 </div>
 
                 <button
